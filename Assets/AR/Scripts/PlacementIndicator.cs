@@ -18,9 +18,6 @@ public class PlacementIndicator : MonoBehaviour
     //Store a collection of hits from Raycasting
     private List<ARRaycastHit> hits;
 
-    public GameObject PrefabToPlace;
-
-
     void Start()
     {
         //get the components
@@ -38,6 +35,30 @@ public class PlacementIndicator : MonoBehaviour
     {
         UpdatePlacementPose();
 
+    }
+
+    public void selectCube()
+    {
+        visual.SetActive(false);
+        visual = transform.GetChild(0).gameObject;
+    }
+
+    public void selectSphere()
+    {
+        visual.SetActive(false);
+        visual = transform.GetChild(1).gameObject;
+    }
+
+    public void selectCapsule()
+    {
+        visual.SetActive(false);
+        visual = transform.GetChild(2).gameObject;
+    }
+
+    public void selectCylinder()
+    {
+        visual.SetActive(false);
+        visual = transform.GetChild(3).gameObject;
     }
 
     private void UpdatePlacementPose()

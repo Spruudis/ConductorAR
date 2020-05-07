@@ -17,7 +17,7 @@ public class ButtonManagement : MonoBehaviour
     {
         uiPanel.SetActive(!uiPanel.activeSelf);
         var toggleButtonText = toggleButton.gameObject.GetComponentInChildren<TextMeshProUGUI>();
-        toggleButtonText.text = uiPanel.activeSelf ? "UI OFF" : "UI ON";
+        toggleButtonText.text = uiPanel.activeSelf ? "Spawn square" : "Square spawned";
     }
 
 

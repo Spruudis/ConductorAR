@@ -9,7 +9,10 @@ public class ObjectSpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject objectToSpawn;
-
+    public GameObject cube;
+    public GameObject sphere;
+    public GameObject cylinder;
+    public GameObject capsule;
     //[SerializeField]
     //private GameObject uiPanel;
 
@@ -22,6 +25,26 @@ public class ObjectSpawner : MonoBehaviour
     {
         placementIndicator = FindObjectOfType<PlacementIndicator>();
 
+    }
+
+    public void spawnCube()
+    {
+        objectToSpawn = cube;
+    }
+
+    public void spawnSphere()
+    {
+        objectToSpawn = sphere;
+    }
+
+    public void spawnCapsule()
+    {
+        objectToSpawn = capsule;
+    }
+
+    public void spawnCylinder()
+    {
+        objectToSpawn = cylinder;
     }
 
     void Update()
@@ -39,13 +62,5 @@ public class ObjectSpawner : MonoBehaviour
             }
         }
     }
-
-    //public void Toggle()
-    //{
-    //    uiPanel.SetActive(!uiPanel.activeSelf);
-    //    var toggleButtonText = toggleButton.gameObject.GetComponentInChildren<TextMeshProUGUI>();
-    //    toggleButtonText.text = uiPanel.activeSelf ? "UI OFF" : "UI ON";
-
-    //}
 
 }
