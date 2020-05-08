@@ -23,6 +23,8 @@ public class PlacementIndicator : MonoBehaviour
         //get the components
         rayManager = FindObjectOfType<ARRaycastManager>();
         sessionOrigin = FindObjectOfType<ARSessionOrigin>(); //Find a reference to the session Origin
+
+        //TODO: instantiate only those children which are present in the scene
         visual = transform.GetChild(0).gameObject;
 
         //Hide the placement visual
