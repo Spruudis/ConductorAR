@@ -26,7 +26,7 @@ public class MenuScript : MonoBehaviour
     public void OnPlayClick()
     {
         //Load AR Scene
-        SceneManager.LoadScene("Orchestra");
+        SceneManager.LoadScene("SongSelection");
     }
 
     public void OnComposeClick()
