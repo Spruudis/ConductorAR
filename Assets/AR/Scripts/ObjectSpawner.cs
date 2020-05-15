@@ -7,13 +7,9 @@ using UnityEngine.XR.ARFoundation;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject objectToSpawn;
-    public GameObject cube;
-    public GameObject sphere;
-    public GameObject cylinder;
-    public GameObject capsule;
-    //[SerializeField]
+    public GameObject objectManagerGameObject;  // Create a public reference to the enemy game object.
+    private ObjectManager objectManager;
+
     //private GameObject uiPanel;
 
     //[SerializeField]
@@ -21,30 +17,66 @@ public class ObjectSpawner : MonoBehaviour
 
     private PlacementIndicator placementIndicator;
 
+    [SerializeField]
+    private Button xylophoneButton;
+
+    [SerializeField]
+    private Button pianoButton;
+
+    [SerializeField]
+    private Button violinsButton;
+
+    [SerializeField]
+    private Button drumsButton;
+
+
     void Start()
     {
         placementIndicator = FindObjectOfType<PlacementIndicator>();
+        objectManager = objectManagerGameObject.GetComponent<ObjectManager>();
+
+        //Go through the list of instruments for the selected song
+        foreach (string instrument in SongLoader.instruments)
+        {
+            //Enable the correct button 
+            switch (instrument)
+            {
+                case "xylophone":
+                    xylophoneButton.gameObject.SetActive(true);
+                    break;
+                case "piano":
+                    pianoButton.gameObject.SetActive(true);
+                    break;
+                case "violins":
+                    violinsButton.gameObject.SetActive(true);
+                    break;
+                case "drums":
+                    drumsButton.gameObject.SetActive(true);
+                    break;
+            }
+        }
 
     }
 
     public void spawnCube()
     {
-        objectToSpawn = cube;
+        objectManager.selectXylophone();
+        
     }
 
     public void spawnSphere()
     {
-        objectToSpawn = sphere;
+        objectManager.selectPiano();
     }
 
     public void spawnCapsule()
     {
-        objectToSpawn = capsule;
+        objectManager.selectViolins();
     }
 
     public void spawnCylinder()
     {
-        objectToSpawn = cylinder;
+        objectManager.selectDrums();
     }
 
     void Update()
@@ -58,7 +90,11 @@ public class ObjectSpawner : MonoBehaviour
 
             if (!isOverUI)
             {
-                GameObject obj = Instantiate(objectToSpawn, placementIndicator.transform.position, placementIndicator.transform.rotation);
+                //Call on ObjectManager to try and create the class
+                //GameObject obj = Instantiate(objectManager.objectToSpawn, placementIndicator.transform.position, placementIndicator.transform.rotation);
+                objectManager.spawnObject(placementIndicator.transform.position, placementIndicator.transform.rotation);
+
+
             }
         }
     }
