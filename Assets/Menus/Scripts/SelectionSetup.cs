@@ -25,7 +25,7 @@ public class SelectionSetup : MonoBehaviour
             int i = 0;
             // Create a new StreamReader, tell it which file to read and what encoding the file
             // was saved as
-            string txtPath = Application.streamingAssetsPath + "/saveFiles.txt";
+            string txtPath = Application.persistentDataPath + "/saveFiles.txt";
             StreamReader theReader = new StreamReader(txtPath, Encoding.Default);
             // Immediately clean up the reader after this block of code is done.
             // You generally use the "using" statement for potentially memory-intensive objects

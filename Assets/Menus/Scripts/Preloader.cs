@@ -20,17 +20,29 @@ public class Preloader : MonoBehaviour
 
         //Preload the game if anything to preload
         //$$
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/FurElise.data";
-        FileStream stream = new FileStream(path, FileMode.Create);
-        List<string> instruments = new List<string>();
-        instruments.Add("xylophone");
-        instruments.Add("piano");
-        instruments.Add("violins");
-        SongData furElise = new SongData("Fur Elise", instruments);
-        // Creating binary file
-        formatter.Serialize(stream, furElise);
-        stream.Close();
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/FurElise.data"))
+        {
+            Debug.Log("Found txt file");
+            BinaryFormatter formatter = new BinaryFormatter();
+            string path = Application.persistentDataPath + "/FurElise.data";
+            FileStream stream = new FileStream(path, FileMode.Create);
+            List<string> instruments = new List<string>();
+            instruments.Add("xylophone");
+            instruments.Add("piano");
+            instruments.Add("violins");
+            SongData furElise = new SongData("Fur Elise", instruments);
+            // Creating binary file
+            formatter.Serialize(stream, furElise);
+            stream.Close();  
+        }
+
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/saveFiles.txt")) 
+        {
+            StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/saveFiles.txt", false);
+            writer.WriteLine("FurElise.data");
+            writer.Close();
+        }
+        
         //Get the timestamp of of completion time
         if(Time.time < minimumLogoTime)
         {
