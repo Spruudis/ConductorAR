@@ -35,6 +35,8 @@ public class ObjectManager : MonoBehaviour
     //private Dictionary<string, GameObjectReference> spawnedObjects;    //Use this if the dictionary stores a copy of the object and it cannot be changed appropriately
     private Dictionary<string, GameObject> spawnedObjectsDict;
 
+  
+    private Dictionary<string, GameObject> referenceObjectsDict;
 
 
 
@@ -62,35 +64,21 @@ public class ObjectManager : MonoBehaviour
         targetObject = "xylophone";
 
         spawnedObjectsDict = new Dictionary<string, GameObject>();
+
+        referenceObjectsDict = new Dictionary<string, GameObject>();
+        referenceObjectsDict.Add("xylophone", xylophoneReference);
+        referenceObjectsDict.Add("piano", pianoReference);
+        referenceObjectsDict.Add("violins", violinsReference);
+        referenceObjectsDict.Add("drums", drumsReference);
+
     }
 
 
-    //functions to select spawnable object
-    public void selectXylophone()
+    public void selectObject(string name)
     {
-        objectToSpawn = xylophoneReference;
-        targetObject = "xylophone";
+        objectToSpawn = referenceObjectsDict[name];
+        targetObject = name;
     }
-
-    public void selectPiano()
-    {
-        objectToSpawn = pianoReference;
-        targetObject = "piano";
-    }
-
-    public void selectViolins()
-    {
-        objectToSpawn = violinsReference;
-        targetObject = "violins";
-    }
-
-    public void selectDrums()
-    {
-        objectToSpawn = drumsReference;
-        targetObject = "drums";
-    }
-
-
 
     //functions responsible for spawning each instrument
     public bool spawnObject(Vector3 position, Quaternion rotation)
@@ -98,18 +86,30 @@ public class ObjectManager : MonoBehaviour
         if (!spawnedObjectsDict.ContainsKey(targetObject)){ //Object is not in the dictionary
 
             spawnedObjectsDict.Add(targetObject, Instantiate(objectToSpawn, position, rotation)); //Instantiate and add the object to the dict
-            Console.WriteLine("New object spawned");
+            Debug.Log("New object spawned");
             return true;
         }
         else
         {
-            Console.WriteLine("Type of object already has been spawned, moving the object instead");
+            Debug.Log("Type of object already has been spawned, moving the object instead");
             spawnedObjectsDict[targetObject].transform.Translate(Vector3.up * 0.1f);
 
             return false;
         }
 
 
+    }
+
+    public void despawnObject()
+    {
+        //REmove the object
+        Debug.Log("ObjectManager: despawnObject --- Attempting to destroy " + targetObject);
+        if (spawnedObjectsDict.ContainsKey(targetObject))
+        {
+            Destroy(spawnedObjectsDict[targetObject]);
+            spawnedObjectsDict.Remove(targetObject);
+            Debug.Log("ObjectManager: despawnObject --- --- Destruction successful");
+        }
     }
 
 
