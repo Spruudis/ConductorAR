@@ -23,10 +23,12 @@ public class Preloader : MonoBehaviour
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/FurElise.data";
         FileStream stream = new FileStream(path, FileMode.Create);
-        List<string> instruments = new List<string>();
-        instruments.Add("xylophone");
-        instruments.Add("piano");
-        instruments.Add("violins");
+        List<string> instruments = new List<string>
+        {
+            "xylophone",
+            "piano",
+            "violins"
+        };
         SongData furElise = new SongData("Fur Elise", instruments);
         // Creating binary file
         formatter.Serialize(stream, furElise);
