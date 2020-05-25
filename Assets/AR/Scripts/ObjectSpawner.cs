@@ -21,16 +21,16 @@ public class ObjectSpawner : MonoBehaviour
     private GameObject buttonListContent;
 
     [SerializeField]
-    private Button xylophoneButton;
+    private Button synthButton;
 
     [SerializeField]
     private Button pianoButton;
 
     [SerializeField]
-    private Button violinsButton;
+    private Button stringsButton;
 
     [SerializeField]
-    private Button drumsButton;
+    private Button celloButton;
 
     private Dictionary<string, Button> buttonReferenceDict;
     private Dictionary<string, Button> buttonDict;
@@ -46,10 +46,10 @@ public class ObjectSpawner : MonoBehaviour
         Debug.Log("ObjectSpawner: Start --- Creating the reference dictionary");
         buttonReferenceDict = new Dictionary<string, Button>
         {
-            { "xylophone", xylophoneButton },
+            { "synth", synthButton },
             { "piano", pianoButton },
-            { "violins", violinsButton },
-            { "drums", drumsButton }
+            { "strings", stringsButton },
+            { "cello", celloButton }
         };
 
 
@@ -195,6 +195,28 @@ public class ObjectSpawner : MonoBehaviour
             Debug.Log("ObjectSpawner: AttemptGameStart --- --- All objects placed");
             placementIndicator.gameObject.SetActive(false);
             startButton.gameObject.SetActive(true);
+            Dictionary<string, GameObject> allObjects = objectManager.allObjectsSpawned();
+            foreach(KeyValuePair<string, GameObject> entry in allObjects)
+            {
+                switch (entry.Key)
+                {
+                    case "strings":
+                    startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<Strings>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key]); });
+                    break;
+                    case "cello":
+                    startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<Cello>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key]); });
+                    break;
+                    case "synth":
+                    startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<Synth>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key]); });
+                    break;
+                    case "piano":
+                    startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<Piano>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key]); });
+                    break;
+                }
+                
+            }
+            
+               
         }
     }
 

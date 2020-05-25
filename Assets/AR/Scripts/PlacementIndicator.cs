@@ -24,16 +24,16 @@ public class PlacementIndicator : MonoBehaviour
 
     //GameObject asset references to be instantiated
     [SerializeField]
-    private GameObject xylophoneReference;
+    private GameObject synthReference;
 
     [SerializeField]
     private GameObject pianoReference;
 
     [SerializeField]
-    private GameObject violinsReference;
+    private GameObject stringsReference;
 
     [SerializeField]
-    private GameObject drumsReference;
+    private GameObject celloReference;
 
 
 
@@ -45,10 +45,10 @@ public class PlacementIndicator : MonoBehaviour
 
         //Initialise and fill the dictionary;
         referenceDict = new Dictionary<string, GameObject>();
-        referenceDict.Add("xylophone", xylophoneReference);
+        referenceDict.Add("synth", synthReference);
         referenceDict.Add("piano", pianoReference);
-        referenceDict.Add("violins", violinsReference);
-        referenceDict.Add("drums", drumsReference);
+        referenceDict.Add("strings", stringsReference);
+        referenceDict.Add("cello", celloReference);
 
         //TODO: instantiate only those children which are present in the scene
         visual = transform.GetChild(0).gameObject;

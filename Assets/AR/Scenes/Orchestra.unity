@@ -241,7 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1f992afbdc1354289b7a6a73284b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xylophoneButton: {fileID: 0}
+  xylophoneButton: {fileID: 1505059643874681296, guid: 2526fb3474d44964082bd91016901220,
+    type: 3}
   pianoButton: {fileID: 1594426953}
   violinsButton: {fileID: 978148611}
   drumsButton: {fileID: 1574042509}
@@ -255,6 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 40919616}
   - component: {fileID: 40919615}
+  - component: {fileID: 40919617}
   m_Layer: 0
   m_Name: ObjectSpawner
   m_TagString: Untagged
@@ -277,13 +279,13 @@ MonoBehaviour:
   objectManagerGameObject: {fileID: 1843940202}
   startButton: {fileID: 265956039}
   buttonListContent: {fileID: 108230905}
-  xylophoneButton: {fileID: 6586436186806454299, guid: 3412baba93d51cc46b79884e9418fa27,
+  synthButton: {fileID: 6586436186806454299, guid: 3412baba93d51cc46b79884e9418fa27,
     type: 3}
   pianoButton: {fileID: 6973937826892352994, guid: 3dd511830a3a99c4c88178b9166c9abc,
     type: 3}
-  violinsButton: {fileID: 1505059643874681296, guid: 2526fb3474d44964082bd91016901220,
+  stringsButton: {fileID: 1505059643874681296, guid: 2526fb3474d44964082bd91016901220,
     type: 3}
-  drumsButton: {fileID: 9185837100677717286, guid: e4d4e8faeb7cde24a9645b33ac6596f4,
+  celloButton: {fileID: 9185837100677717286, guid: e4d4e8faeb7cde24a9645b33ac6596f4,
     type: 3}
 --- !u!4 &40919616
 Transform:
@@ -299,6 +301,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &40919617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40919614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1709dfc2b11c9454b8acdbffcbcec5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &108230905
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,10 +681,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249ebee52bd590f47988238638c48cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xylophoneReference: {fileID: 1710119733}
-  pianoReference: {fileID: 1370639140}
-  violinsReference: {fileID: 1793089056}
-  drumsReference: {fileID: 854905462}
+  synthReference: {fileID: 3031192926320306879, guid: 19d7652363a714b438fcff21785ce8ed,
+    type: 3}
+  pianoReference: {fileID: 3054474018714133567, guid: d99236f9ba3760041ba4688f43a1d6e1,
+    type: 3}
+  stringsReference: {fileID: 5274312123187426357, guid: f3a0fde3c5d453146a4b0223c2bbab4e,
+    type: 3}
+  celloReference: {fileID: 7582006368909485931, guid: d61befe3f2db881499080df3e0b2d9f2,
+    type: 3}
 --- !u!4 &223974228
 Transform:
   m_ObjectHideFlags: 0
@@ -1023,12 +1041,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &854905462 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5274312123187426357, guid: f3a0fde3c5d453146a4b0223c2bbab4e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1577749883}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &854905463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6093963303873641279, guid: f3a0fde3c5d453146a4b0223c2bbab4e,
@@ -1586,12 +1598,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1370639140 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3054474018714133567, guid: d99236f9ba3760041ba4688f43a1d6e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1985308836}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1370639141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1734454965681258227, guid: d61befe3f2db881499080df3e0b2d9f2,
@@ -1916,12 +1922,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694263781}
   m_CullTransparentMesh: 0
---- !u!1 &1710119733 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3031192926320306879, guid: 19d7652363a714b438fcff21785ce8ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 1562069058}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1710119734 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4337104417118087880, guid: 19d7652363a714b438fcff21785ce8ed,
@@ -2028,12 +2028,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1793089056 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7582006368909485931, guid: d61befe3f2db881499080df3e0b2d9f2,
-    type: 3}
-  m_PrefabInstance: {fileID: 463930438}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1793089057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4559249019978580054, guid: d99236f9ba3760041ba4688f43a1d6e1,
@@ -2217,13 +2211,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c80d16abca164047b9a49f355749a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xylophoneReference: {fileID: 7496280022398652796, guid: c498a41ea85989c4dbeb779b53a8eec1,
+  synthReference: {fileID: 7496280022398652796, guid: c498a41ea85989c4dbeb779b53a8eec1,
     type: 3}
   pianoReference: {fileID: 1939539709610982093, guid: bb4b5cac25b31d541b60747dd59f2658,
     type: 3}
-  violinsReference: {fileID: 3484139521002034609, guid: 24a67ddefae85784b84b848b5f480048,
+  celloReference: {fileID: 3484139521002034609, guid: 24a67ddefae85784b84b848b5f480048,
     type: 3}
-  drumsReference: {fileID: 3735883992743552648, guid: c67f2a7ac33e3404095011d02f6b5608,
+  stringsReference: {fileID: 3735883992743552648, guid: c67f2a7ac33e3404095011d02f6b5608,
     type: 3}
 --- !u!4 &1843940204
 Transform:
@@ -2523,7 +2517,7 @@ PrefabInstance:
     - target: {fileID: 1505059643874681297, guid: 2526fb3474d44964082bd91016901220,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1505059643874681297, guid: 2526fb3474d44964082bd91016901220,
         type: 3}
@@ -2657,7 +2651,7 @@ PrefabInstance:
     - target: {fileID: 6973937826892352995, guid: 3dd511830a3a99c4c88178b9166c9abc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6973937826892352995, guid: 3dd511830a3a99c4c88178b9166c9abc,
         type: 3}
@@ -2796,7 +2790,7 @@ PrefabInstance:
     - target: {fileID: 9185837100677717287, guid: e4d4e8faeb7cde24a9645b33ac6596f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9185837100677717287, guid: e4d4e8faeb7cde24a9645b33ac6596f4,
         type: 3}

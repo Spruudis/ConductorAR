@@ -20,26 +20,37 @@ public class Preloader : MonoBehaviour
 
         //Preload the game if anything to preload
         //$$
-        if (!System.IO.File.Exists(Application.persistentDataPath + "/FurElise.data"))
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/AJourneyToHeaven.data"))
         {
             Debug.Log("Found txt file");
             BinaryFormatter formatter = new BinaryFormatter();
-            string path = Application.persistentDataPath + "/FurElise.data";
+            string path = Application.persistentDataPath + "/AJourneyToHeaven.data";
             FileStream stream = new FileStream(path, FileMode.Create);
-            List<string> instruments = new List<string>();
-            instruments.Add("xylophone");
-            instruments.Add("piano");
-            instruments.Add("violins");
-            SongData furElise = new SongData("Fur Elise", instruments);
+            List<string> instruments = new List<string>()
+            {
+                "cello",
+                "piano",
+                "synth",
+                "strings"
+            };
+            List<float> allCues = aJourneyToHeavenCues();
+            List<string> clipNames = new List<string>()
+            {
+                "Cello_AJourneyToHeaven",
+                "Piano_AJourneyToHeaven",
+                "Synth_AJourneyToHeaven",
+                "Strings_AJourneyToHeaven"
+            }; 
+            SongData aJourneyToHeaven = new SongData("A Journey To Heaven", instruments, allCues, clipNames);
             // Creating binary file
-            formatter.Serialize(stream, furElise);
+            formatter.Serialize(stream, aJourneyToHeaven);
             stream.Close();  
         }
 
         if (!System.IO.File.Exists(Application.persistentDataPath + "/saveFiles.txt")) 
         {
             StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/saveFiles.txt", false);
-            writer.WriteLine("FurElise.data");
+            writer.WriteLine("AJourneyToHeaven.data");
             writer.Close();
         }
         
@@ -74,5 +85,54 @@ public class Preloader : MonoBehaviour
             }
         }
         
+    }
+
+    List<float> aJourneyToHeavenCues()
+    {
+        List<float> allCues = new List<float>();
+        List<float> celloCues = new List<float>(){
+            33,
+            72,
+            78,
+            172,
+            181,
+            217,
+            264,
+            308
+        };
+        List<float> pianoCues = new List<float>(){
+            14,
+            114,
+            221,
+            240,
+            250,
+            303
+        };
+        List<float> synthCues = new List<float>(){
+            8,
+            129,
+            149,
+            177,
+            182,
+            221,
+            247,
+            270
+        };
+        List<float> stringsCues = new List<float>(){
+            27,
+            72,
+            77,
+            244,
+            250,
+            308
+        };
+        allCues.AddRange(celloCues);
+        allCues.Add(-1);
+        allCues.AddRange(pianoCues);
+        allCues.Add(-1);
+        allCues.AddRange(synthCues);
+        allCues.Add(-1);
+        allCues.AddRange(stringsCues);
+        return allCues;
     }
 }
