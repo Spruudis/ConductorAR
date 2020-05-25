@@ -19,16 +19,16 @@ public class ObjectManager : MonoBehaviour
 
     //GameObject asset references to be instantiated
     [SerializeField]
-    private GameObject xylophoneReference;
+    private GameObject synthReference;
 
     [SerializeField]
     private GameObject pianoReference;
 
     [SerializeField]
-    private GameObject violinsReference;
+    private GameObject celloReference;
 
     [SerializeField]
-    private GameObject drumsReference;
+    private GameObject stringsReference;
 
 
     //Instantiated objects
@@ -60,17 +60,17 @@ public class ObjectManager : MonoBehaviour
 
     private void Start()
     {
-        objectToSpawn = xylophoneReference;
-        targetObject = "xylophone";
+        objectToSpawn = synthReference;
+        targetObject = "synth";
 
         spawnedObjectsDict = new Dictionary<string, GameObject>();
 
         referenceObjectsDict = new Dictionary<string, GameObject>
         {
-            { "xylophone", xylophoneReference },
+            { "synth", synthReference },
             { "piano", pianoReference },
-            { "violins", violinsReference },
-            { "drums", drumsReference }
+            { "cello", celloReference },
+            { "strings", stringsReference }
         };
 
     }
@@ -112,6 +112,10 @@ public class ObjectManager : MonoBehaviour
             spawnedObjectsDict.Remove(targetObject);
             Debug.Log("ObjectManager: despawnObject --- --- Destruction successful");
         }
+    }
+
+    public Dictionary<string, GameObject> allObjectsSpawned(){
+        return spawnedObjectsDict;
     }
 
 

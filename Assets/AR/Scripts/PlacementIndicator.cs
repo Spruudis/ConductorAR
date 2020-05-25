@@ -24,16 +24,16 @@ public class PlacementIndicator : MonoBehaviour
 
     //GameObject asset references to be instantiated
     [SerializeField]
-    private GameObject xylophoneReference;
+    private GameObject synthReference;
 
     [SerializeField]
     private GameObject pianoReference;
 
     [SerializeField]
-    private GameObject violinsReference;
+    private GameObject stringsReference;
 
     [SerializeField]
-    private GameObject drumsReference;
+    private GameObject celloReference;
 
 
 
@@ -44,12 +44,13 @@ public class PlacementIndicator : MonoBehaviour
         sessionOrigin = FindObjectOfType<ARSessionOrigin>(); //Find a reference to the session Origin
 
         //Initialise and fill the dictionary;
+
         referenceDict = new Dictionary<string, GameObject>
         {
-            { "xylophone", xylophoneReference },
+            { "synth", synthReference },
             { "piano", pianoReference },
-            { "violins", violinsReference },
-            { "drums", drumsReference }
+            { "strings", stringsReference },
+            { "cello", celloReference }
         };
 
         //TODO: instantiate only those children which are present in the scene
