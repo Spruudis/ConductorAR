@@ -18,8 +18,11 @@ public class SelectionSetup : MonoBehaviour
     {
         Debug.Log("Testing");
         songFiles = new List<string>();
-        // Handle any problems that might arise when reading the text
-        try
+        string line = "FurElise.data";
+        songFiles.Add(line);
+        string path = Application.persistentDataPath + "/" + line;
+        SongData data = null;
+        if (File.Exists(path))
         {
             string line;
             int i = 0;
@@ -30,7 +33,7 @@ public class SelectionSetup : MonoBehaviour
             // Immediately clean up the reader after this block of code is done.
             // You generally use the "using" statement for potentially memory-intensive objects
             // instead of relying on garbage collection.
-            // (Do not confuse this with the using directive for namespace at the 
+            // (Do not confuse this with the using directive for namespace at the
             // beginning of a class!)
             using (theReader)
             {
@@ -38,7 +41,7 @@ public class SelectionSetup : MonoBehaviour
                 do
                 {
                     line = theReader.ReadLine();
-                    SongData data = null;    
+                    SongData data = null;
                     if (line != null)
                     {
                         // Do whatever you need to do with the text line, it's a string now
@@ -51,32 +54,19 @@ public class SelectionSetup : MonoBehaviour
                             BinaryFormatter formatter = new BinaryFormatter();
                             FileStream stream = new FileStream(path, FileMode.Open);
 
-                            data = formatter.Deserialize(stream) as SongData;
-                            stream.Close();
-                        }
-                        GameObject go = Instantiate(buttonPrefab) as GameObject;
-                        go.transform.SetParent(ButtonListContent.transform);
-                        var button = go.GetComponent<UnityEngine.UI.Button>();
-                        button.GetComponentInChildren<Text>().text = data.songName;
-                        int buttonNo = i;
-                        button.onClick.AddListener(delegate{ loadARScene(buttonNo); });
-                        i++;
-                    }
-                }
-                while (line != null);
-                // Done reading, close the reader and return true to broadcast success    
-                theReader.Close();
-            }
+            data = formatter.Deserialize(stream) as SongData;
+            stream.Close();
         }
-        // If anything broke in the try block, we throw an exception with information
-        // on what didn't work
-        catch (Exception e)
-        {
-            Console.WriteLine("{0}\n", e.Message);
-        }
+        GameObject go = Instantiate(buttonPrefab) as GameObject;
+        go.transform.SetParent(ButtonListContent.transform);
+        var button = go.GetComponent<UnityEngine.UI.Button>();
+        button.GetComponentInChildren<Text>().text = data.songName;
+        int buttonNo = 0;
+        button.onClick.AddListener(delegate { loadARScene(buttonNo); });
+
     }
 
-    void loadARScene(int buttonNo) 
+    void loadARScene(int buttonNo)
     {
         SongData data = null;
         Debug.Log("Number: " + buttonNo);
