@@ -70,7 +70,7 @@ public class ObjectSpawner : MonoBehaviour
             buttonDict[instrument].onClick.AddListener(delegate { placementIndicator.SelectObject(instrument); });
             buttonDict[instrument].onClick.AddListener(delegate { prime(instrument); });
             buttonDict[instrument].gameObject.GetComponent<LongPressButton>().onLongClick.AddListener(delegate { Despawn(instrument);});
-            buttonDict[instrument].gameObject.GetComponent<LongPressButton>().onLongClick.AddListener(delegate { PrimeButton(instrument); });
+            buttonDict[instrument].gameObject.GetComponent<LongPressButton>().onLongClickRelease.AddListener(delegate { PrimeButton(instrument); });
 
 
         }
@@ -79,7 +79,7 @@ public class ObjectSpawner : MonoBehaviour
 
 
     //Unselects all instruments (that are in the spawn state)
-    private void resetButtons()
+    private void ResetButtons()
     {
         foreach (KeyValuePair<string, Button> item in buttonDict)
         {   
@@ -102,7 +102,7 @@ public class ObjectSpawner : MonoBehaviour
     public void prime(string key)
     {
 
-        resetButtons();
+        ResetButtons();
 
         //Change the text on the pressed button
         TextMeshProUGUI txt = buttonDict[key].GetComponentInChildren<TextMeshProUGUI>();
@@ -148,6 +148,7 @@ public class ObjectSpawner : MonoBehaviour
 
 
     //Returns the button to the spawn state from the unspawn state
+    //Occurs when the hold button is released aftter a successful press
     public void PrimeButton(string key)
     {
         //Switch button state
@@ -160,18 +161,22 @@ public class ObjectSpawner : MonoBehaviour
         buttonDict[key].onClick.AddListener(delegate { prime(key); });
         //The OnClick functionality is triggered as soon as this function finishes do to the trigger still being active from the despawn button press
 
-        //Reactivate the placement indicator in case all objects were placed
-        placementIndicator.gameObject.SetActive(true);
-
-        //Disable the Start button
-        startButton.gameObject.SetActive(false);
     }
 
     //Signals the ObjectManager to despawn the selected object
+    //Occurs when the hold button is pressed for long enough
     public void Despawn(string key)
     {
         objectManager.selectObject(key);
         objectManager.despawnObject();
+
+        //Reactivate the placement indicator in case all objects were placed
+        placementIndicator.gameObject.SetActive(true);
+        placementIndicator.SelectObject(key);
+        placementIndicator.ShowIndicator();
+
+        //Disable the Start button
+        startButton.gameObject.SetActive(false);
     }
 
     //Attempts to move the scene to the Conducting phase if all objects have been placed

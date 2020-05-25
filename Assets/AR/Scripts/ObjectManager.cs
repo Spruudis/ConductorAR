@@ -65,11 +65,13 @@ public class ObjectManager : MonoBehaviour
 
         spawnedObjectsDict = new Dictionary<string, GameObject>();
 
-        referenceObjectsDict = new Dictionary<string, GameObject>();
-        referenceObjectsDict.Add("synth", synthReference);
-        referenceObjectsDict.Add("piano", pianoReference);
-        referenceObjectsDict.Add("cello", celloReference);
-        referenceObjectsDict.Add("strings", stringsReference);
+        referenceObjectsDict = new Dictionary<string, GameObject>
+        {
+            { "synth", synthReference },
+            { "piano", pianoReference },
+            { "cello", celloReference },
+            { "strings", stringsReference }
+        };
 
     }
 
