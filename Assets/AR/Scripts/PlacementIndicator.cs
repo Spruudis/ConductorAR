@@ -44,7 +44,7 @@ public class PlacementIndicator : MonoBehaviour
         sessionOrigin = FindObjectOfType<ARSessionOrigin>(); //Find a reference to the session Origin
 
         //Initialise and fill the dictionary;
-
+     
         referenceDict = new Dictionary<string, GameObject>
         {
             { "synth", synthReference },
@@ -81,6 +81,7 @@ public class PlacementIndicator : MonoBehaviour
 
     public void SelectObject (string key)
     {
+        Debug.Log("PlacementIndicator: SelectObject --- Selecting the " + key);
         visual.SetActive(false);
         visual = referenceDict[key];
     }
@@ -105,6 +106,8 @@ public class PlacementIndicator : MonoBehaviour
             if (!visual.activeInHierarchy && showIndicator)
             {
                 visual.SetActive(true);
+                Debug.Log("PlacementIndicator: UpdatePlacementPose --- Setting the placement indicator to be active");
+
 
             }
         }
