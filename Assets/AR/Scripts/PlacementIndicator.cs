@@ -44,11 +44,14 @@ public class PlacementIndicator : MonoBehaviour
         sessionOrigin = FindObjectOfType<ARSessionOrigin>(); //Find a reference to the session Origin
 
         //Initialise and fill the dictionary;
-        referenceDict = new Dictionary<string, GameObject>();
-        referenceDict.Add("synth", synthReference);
-        referenceDict.Add("piano", pianoReference);
-        referenceDict.Add("strings", stringsReference);
-        referenceDict.Add("cello", celloReference);
+
+        referenceDict = new Dictionary<string, GameObject>
+        {
+            { "synth", synthReference },
+            { "piano", pianoReference },
+            { "strings", stringsReference },
+            { "cello", celloReference }
+        };
 
         //TODO: instantiate only those children which are present in the scene
         visual = transform.GetChild(0).gameObject;
