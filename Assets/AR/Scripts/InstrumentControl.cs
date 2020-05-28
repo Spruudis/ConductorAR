@@ -53,6 +53,7 @@ public class InstrumentControl : MonoBehaviour
                     // In this case, the user is late to cue out, so the musicians will stop
                     // and let's have them have a little grumble
                     m_MyAudioSource.mute = !m_MyAudioSource.mute;
+                    //TO-DO: Call grumbling animation function
                 }
                 cueIndex++;
             }
