@@ -198,22 +198,7 @@ public class ObjectSpawner : MonoBehaviour
             Dictionary<string, GameObject> allObjects = objectManager.allObjectsSpawned();
             foreach(KeyValuePair<string, GameObject> entry in allObjects)
             {
-                switch (entry.Key)
-                {
-                    case "strings":
-                    startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<Strings>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key]); });
-                    break;
-                    case "cello":
-                    startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<Cello>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key]); });
-                    break;
-                    case "synth":
-                    startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<Synth>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key]); });
-                    break;
-                    case "piano":
-                    startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<Piano>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key]); });
-                    break;
-                }
-                
+                startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControl>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key]); });
             }
             
                
