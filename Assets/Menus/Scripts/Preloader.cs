@@ -14,15 +14,15 @@ public class Preloader : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Preloader: Start --- Starting preloading");
         //Grabbing the only Canvasgroup in the scene 
         fadeGroup = FindObjectOfType<CanvasGroup>(); //Might break if multiple canvas group are present
         fadeGroup.alpha = 1;
 
         //Preload the game if anything to preload
-        //$$
         if (!System.IO.File.Exists(Application.persistentDataPath + "/AJourneyToHeaven.data"))
         {
-            Debug.Log("Found txt file");
+            Debug.Log("Preloader: Start --- Saving A Journey to heaven topersistent memory");
             BinaryFormatter formatter = new BinaryFormatter();
             string path = Application.persistentDataPath + "/AJourneyToHeaven.data";
             FileStream stream = new FileStream(path, FileMode.Create);
@@ -41,7 +41,7 @@ public class Preloader : MonoBehaviour
                 "Synth_AJourneyToHeaven",
                 "Strings_AJourneyToHeaven"
             }; 
-            SongData aJourneyToHeaven = new SongData("A Journey To Heaven", instruments, allCues, clipNames);
+            SongData aJourneyToHeaven = new SongData("A Journey To Heaven", "Damien Deshayes", instruments, allCues, clipNames);
             // Creating binary file
             formatter.Serialize(stream, aJourneyToHeaven);
             stream.Close();  
