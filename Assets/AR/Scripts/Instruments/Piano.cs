@@ -57,7 +57,8 @@ public class Piano : MonoBehaviour
     }
 
     public void OnMouseDown(){
-        if(Math.Abs(m_MyAudioSource.time - cues[cueIndex]) < 1.5){
+        Debug.Log("Piano: OnSwipeDown: recieved tap gesture command");
+        if (Math.Abs(m_MyAudioSource.time - cues[cueIndex]) < 1.5){
             if(cueIndex % 2 == 0){
                 userCueIn();
             } else{
@@ -65,6 +66,16 @@ public class Piano : MonoBehaviour
             }
         }
         
+    }
+
+    public void OnSwipeUp()
+    {
+        Debug.Log("Piano: OnSwipeUp: recieved swipe up gesture command");
+    }
+
+    public void OnSwipeDown()
+    {
+        Debug.Log("Piano: OnSwipeDown: recieved swipe down gesture command");
     }
 
     private void userMistakeCueIn(){

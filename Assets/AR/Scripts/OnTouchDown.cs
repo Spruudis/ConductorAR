@@ -27,7 +27,7 @@ public class OnTouchDown : MonoBehaviour
 
     private void Start()
     {
-        dragDistance = Screen.height * 15 / 100; //dragDistance is 15% height of the screen
+        dragDistance = Screen.height * 10 / 100; //dragDistance is 15% height of the screen
         touchDict = new Dictionary<int, TouchInfo>();
     }
 
@@ -66,11 +66,13 @@ public class OnTouchDown : MonoBehaviour
                 {
                     if(touchDict[touch.fingerId].lastTouch.y > touchDict[touch.fingerId].firstTouch.y)
                     {
-                        Debug.Log("OnTouchDown: Update --- Up Swipe");
+                        Debug.Log("OnTouchDown: Update --- Up Swipe Registered");
+                        touchDict[touch.fingerId].hit.transform.gameObject.SendMessage("OnSwipeUp");
                     }
                     else
                     {
-                        Debug.Log("OnTouchDown: Update --- Down Swipe");
+                        Debug.Log("OnTouchDown: Update --- Down Swipe Registered");
+                        touchDict[touch.fingerId].hit.transform.gameObject.SendMessage("OnSwipeDown");
                     }
                 }
                 else
@@ -78,6 +80,8 @@ public class OnTouchDown : MonoBehaviour
                     Debug.Log("OnTouchDown: Update --- Tap Registered");
                     touchDict[touch.fingerId].hit.transform.gameObject.SendMessage("OnMouseDown");
                 }
+
+                touchDict.Remove(touch.fingerId);
             }
         }
     }

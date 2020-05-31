@@ -57,7 +57,8 @@ public class Cello : MonoBehaviour
     }
 
     public void OnMouseDown(){
-        if(Math.Abs(m_MyAudioSource.time - cues[cueIndex]) < 1.5){
+        Debug.Log("Cello: OnMouseDown: recieved tap gesture command");
+        if (Math.Abs(m_MyAudioSource.time - cues[cueIndex]) < 1.5){
             if(cueIndex % 2 == 0){
                 userCueIn();
             } else{
@@ -65,6 +66,16 @@ public class Cello : MonoBehaviour
             }
         }
         
+    }
+
+    public void OnSwipeUp()
+    {
+        Debug.Log("Cello: OnSwipeUp: recieved swipe up gesture command");
+    }
+
+    public void OnSwipeDown()
+    {
+        Debug.Log("Cello: OnSwipeDown: recieved swipe down gesture command");
     }
 
     private void userMistakeCueIn(){

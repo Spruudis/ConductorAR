@@ -56,16 +56,33 @@ public class Synth : MonoBehaviour
         
     }
 
-    public void OnMouseDown(){
-        if(Math.Abs(m_MyAudioSource.time - cues[cueIndex]) < 1.5){
-            if(cueIndex % 2 == 0){
+    public void OnMouseDown()
+    {
+        Debug.Log("Synth: OnSwipeDown: recieved tap gesture command");
+        if (Math.Abs(m_MyAudioSource.time - cues[cueIndex]) < 1.5)
+        {
+            if (cueIndex % 2 == 0)
+            {
                 userCueIn();
-            } else{
+            }
+            else
+            {
                 userCueOut();
             }
         }
-        
+
     }
+
+    public void OnSwipeUp()
+    {
+        Debug.Log("Synth: OnSwipeUp: recieved swipe up gesture command");
+    }
+
+    public void OnSwipeDown()
+    {
+        Debug.Log("Synth: OnSwipeDown: recieved swipe down gesture command");
+    }
+
 
     private void userMistakeCueIn(){
         m_MyAudioSource.mute = false;
