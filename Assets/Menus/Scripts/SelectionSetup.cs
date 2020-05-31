@@ -12,13 +12,36 @@ public class SelectionSetup : MonoBehaviour
 {
     private List<string> songFiles;
     public GameObject buttonPrefab;
+    public Image iconPrefab;
     public GameObject ButtonListContent;
-    // Start is called before the first frame update
+    
+    private Dictionary<string, Sprite> iconDict;
+
+    [SerializeField]
+    private Sprite synthIconReference;
+    [SerializeField]
+    private Sprite pianoIconReference;
+    [SerializeField]
+    private Sprite stringsIconReference;
+    [SerializeField]
+    private Sprite celloIconReference;
+    [SerializeField]
+    private Sprite reserveIconReference;
+
     void Start()
     {
+        //Setup
         Debug.Log("Testing");
         songFiles = new List<string>();
-        // Handle any problems that might arise when reading the text
+        iconDict = new Dictionary<string, Sprite>()
+        {
+            { "synth", synthIconReference },
+            { "piano", pianoIconReference },
+            { "strings", stringsIconReference },
+            { "cello", celloIconReference }
+        };
+
+        //Loading the song data
         try
         {
             string line;
@@ -39,11 +62,9 @@ public class SelectionSetup : MonoBehaviour
                 {
                     line = theReader.ReadLine();
                     SongData data = null;    
+
                     if (line != null)
                     {
-                        // Do whatever you need to do with the text line, it's a string now
-                        // In this example, I split it into arguments based on comma
-                        // deliniators, then send that array to DoStuff()
                         songFiles.Add(line);
                         string path = Application.persistentDataPath + "/" + line;
                         if (File.Exists(path))
@@ -57,9 +78,28 @@ public class SelectionSetup : MonoBehaviour
                         GameObject go = Instantiate(buttonPrefab) as GameObject;
                         go.transform.SetParent(ButtonListContent.transform);
                         var button = go.GetComponent<UnityEngine.UI.Button>();
-                        button.GetComponentInChildren<Text>().text = data.songName;
+
+                        //Setting up the button text
+                        button.transform.Find("TextArea/SongName").GetComponentInChildren<Text>().text = data.songName;
+                        button.transform.Find("TextArea/Artist").GetComponentInChildren<Text>().text = data.author;
+
+                        //Setting up the button icons
+                        foreach (string instrument in data.instruments){
+                            Image icon = Instantiate(iconPrefab) as Image;
+                            icon.transform.SetParent(button.transform.Find("IconAreaViewport/IconListContent").transform);
+
+                            if (iconDict.ContainsKey(instrument))
+                            {
+                                icon.sprite = iconDict[instrument];
+                            }
+                            else
+                            {
+                                icon.sprite = reserveIconReference;
+                            }
+                        }
+
                         int buttonNo = i;
-                        button.onClick.AddListener(delegate{ loadARScene(buttonNo); });
+                        button.onClick.AddListener(delegate{ loadARScene(buttonNo); }); //Adding button functionality
                         i++;
                     }
                 }
@@ -68,8 +108,6 @@ public class SelectionSetup : MonoBehaviour
                 theReader.Close();
             }
         }
-        // If anything broke in the try block, we throw an exception with information
-        // on what didn't work
         catch (Exception e)
         {
             Console.WriteLine("{0}\n", e.Message);
