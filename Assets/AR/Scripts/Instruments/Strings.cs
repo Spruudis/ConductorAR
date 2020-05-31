@@ -56,7 +56,7 @@ public class Strings : MonoBehaviour
         
     }
 
-    public void OnMouseDown()
+    public void OnTap()
     {
         Debug.Log("Strings: OnSwipeDown: recieved tap gesture command");
         if (Math.Abs(m_MyAudioSource.time - cues[cueIndex]) < 1.5)

@@ -78,7 +78,7 @@ public class OnTouchDown : MonoBehaviour
                 else
                 {
                     Debug.Log("OnTouchDown: Update --- Tap Registered");
-                    touchDict[touch.fingerId].hit.transform.gameObject.SendMessage("OnMouseDown");
+                    touchDict[touch.fingerId].hit.transform.gameObject.SendMessage("OnTap");
                 }
 
                 touchDict.Remove(touch.fingerId);

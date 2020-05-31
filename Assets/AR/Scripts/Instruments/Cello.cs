@@ -56,7 +56,7 @@ public class Cello : MonoBehaviour
         
     }
 
-    public void OnMouseDown(){
+    public void OnTap(){
         Debug.Log("Cello: OnMouseDown: recieved tap gesture command");
         if (Math.Abs(m_MyAudioSource.time - cues[cueIndex]) < 1.5){
             if(cueIndex % 2 == 0){
