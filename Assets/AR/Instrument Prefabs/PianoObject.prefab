@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4337605899897335286}
-  - component: {fileID: -1243579200041580675}
+  - component: {fileID: -3701795069068044162}
   - component: {fileID: -2733105047615205541}
   - component: {fileID: -2907794784408255563}
   - component: {fileID: 4095464209431269168}
@@ -35,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1243579200041580675
+--- !u!114 &-3701795069068044162
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7118744741cd63c4b980222579064929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mistakeSound: {fileID: 0}
 --- !u!135 &-2733105047615205541
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -76,7 +75,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

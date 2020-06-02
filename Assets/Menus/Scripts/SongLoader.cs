@@ -8,4 +8,5 @@ public class SongLoader : MonoBehaviour
     static public List<string> instruments;
     static public Dictionary<string, List<float>> instrumentCues;
     static public Dictionary<string, string> clipNames;
+    static public int BPM;
 }

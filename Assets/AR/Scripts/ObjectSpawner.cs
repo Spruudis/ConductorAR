@@ -35,6 +35,8 @@ public class ObjectSpawner : MonoBehaviour
     private Dictionary<string, Button> buttonReferenceDict;
     private Dictionary<string, Button> buttonDict;
 
+    public Button pauseButton;
+
 
     void Start()
     {
@@ -200,17 +202,26 @@ public class ObjectSpawner : MonoBehaviour
             Debug.Log("ObjectSpawner: AttemptGameStart --- --- All objects placed");
             placementIndicator.gameObject.SetActive(false);
             startButton.gameObject.SetActive(true);
+            startButton.onClick.AddListener(SetPauseActive);
             Dictionary<string, GameObject> allObjects = objectManager.allObjectsSpawned();
             foreach(KeyValuePair<string, GameObject> entry in allObjects)
             {
-                startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControl>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key]); });
+                startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControl>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key], SongLoader.BPM); });
             }
             
                
         }
     }
 
-
+    void SetPauseActive()
+    {
+        pauseButton.gameObject.SetActive(true);
+        Dictionary<string, GameObject> allObjects = objectManager.allObjectsSpawned();
+        foreach(KeyValuePair<string, GameObject> entry in allObjects)
+        {
+            pauseButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControl>().PauseMusic(); });
+        }
+    }
 
 
     //void Update()

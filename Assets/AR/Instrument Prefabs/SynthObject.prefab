@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9028074119591758748}
-  - component: {fileID: -3039044025557106580}
+  - component: {fileID: 1462073700031622886}
   - component: {fileID: -8395040917664758510}
   - component: {fileID: 3264880583572193878}
   - component: {fileID: 7261841257018191938}
@@ -128,7 +128,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3039044025557106580
+--- !u!114 &1462073700031622886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7118744741cd63c4b980222579064929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mistakeSound: {fileID: 0}
 --- !u!65 &-8395040917664758510
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -169,7 +168,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
