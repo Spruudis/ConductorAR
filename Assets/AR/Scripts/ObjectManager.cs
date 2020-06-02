@@ -87,7 +87,12 @@ public class ObjectManager : MonoBehaviour
     {
         if (!spawnedObjectsDict.ContainsKey(targetObject)){ //Object is not in the dictionary
 
-            spawnedObjectsDict.Add(targetObject, Instantiate(objectToSpawn, position, rotation)); //Instantiate and add the object to the dict
+
+            //Find the angle
+            Vector3 rot = rotation.eulerAngles;
+            rot = new Vector3(rot.x, rot.y + 180, rot.z);
+
+            spawnedObjectsDict.Add(targetObject, Instantiate(objectToSpawn, position, Quaternion.Euler(rot))); //Instantiate and add the object to the dict
             Debug.Log("New object spawned");
             return true;
         }

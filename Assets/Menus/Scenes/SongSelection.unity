@@ -788,9 +788,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e55c0deb7f490384486809f7a44e98dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 5557373347596675030, guid: 268807734843eb149a8498e5ef9af5a0,
+  buttonPrefab: {fileID: 2303866571016879469, guid: 320fc94f46476a04a89a5bfebc01ff3b,
+    type: 3}
+  iconPrefab: {fileID: 2321403046443896374, guid: 687d9d9bb273a3c4b9c9c3918ca6c6a5,
     type: 3}
   ButtonListContent: {fileID: 1049878548}
+  synthIconReference: {fileID: 21300000, guid: 66dbd1d9441a3e344869a8a123dd36d9, type: 3}
+  pianoIconReference: {fileID: 21300000, guid: ad8c1ad04218b294dbc032c957cc88e0, type: 3}
+  stringsIconReference: {fileID: 21300000, guid: 7bff91266992de54bafdbac8fc0d12d6,
+    type: 3}
+  celloIconReference: {fileID: 21300000, guid: dc4a1f57b496e3b4b95515b020e10cb9, type: 3}
+  reserveIconReference: {fileID: 21300000, guid: 4ccee068875f47b43b7fe260827eccfb,
+    type: 3}
 --- !u!4 &1726798906
 Transform:
   m_ObjectHideFlags: 0

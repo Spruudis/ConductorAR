@@ -14,15 +14,15 @@ public class Preloader : MonoBehaviour
 
     void Start()
     {
-        //Grabbing the only Canvasgroup in the scene 
+        Debug.Log("Preloader: Start --- Starting preloading");
+        //Grabbing the only Canvasgroup in the scene
         fadeGroup = FindObjectOfType<CanvasGroup>(); //Might break if multiple canvas group are present
         fadeGroup.alpha = 1;
 
-        //Preload the game if anything to preload
-        //$$
+        //------ Song: Journey to Heaven by Damien Deshayes ------
         if (!System.IO.File.Exists(Application.persistentDataPath + "/AJourneyToHeaven.data"))
         {
-            Debug.Log("Found txt file");
+            Debug.Log("Preloader: Start --- Saving A Journey to heaven to persistent memory");
             BinaryFormatter formatter = new BinaryFormatter();
             string path = Application.persistentDataPath + "/AJourneyToHeaven.data";
             FileStream stream = new FileStream(path, FileMode.Create);
@@ -40,20 +40,51 @@ public class Preloader : MonoBehaviour
                 "Piano_AJourneyToHeaven",
                 "Synth_AJourneyToHeaven",
                 "Strings_AJourneyToHeaven"
-            }; 
-            SongData aJourneyToHeaven = new SongData("A Journey To Heaven", instruments, allCues, clipNames, 50);
+            };
+            SongData aJourneyToHeaven = new SongData("A Journey To Heaven", "Damien Deshayes", instruments, allCues, clipNames, 50);
             // Creating binary file
             formatter.Serialize(stream, aJourneyToHeaven);
-            stream.Close();  
+            stream.Close();
         }
 
-        if (!System.IO.File.Exists(Application.persistentDataPath + "/saveFiles.txt")) 
+
+        //------ Song: Journey to Hell by Lucifer Morningstar ------
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/AJourneyToHell.data"))
+        {
+            Debug.Log("Preloader: Start --- Saving A Journey to Hell to persistent memory");
+            BinaryFormatter formatter = new BinaryFormatter();
+            string path = Application.persistentDataPath + "/AJourneyToHell.data";
+            FileStream stream = new FileStream(path, FileMode.Create);
+            List<string> instruments = new List<string>()
+            {
+                "drums",
+                "guitar",
+                "bass",
+                "strings"
+            };
+            List<float> allCues = aJourneyToHeavenCues();
+            List<string> clipNames = new List<string>()
+            {
+                "Cello_AJourneyToHeaven",
+                "Piano_AJourneyToHeaven",
+                "Synth_AJourneyToHeaven",
+                "Strings_AJourneyToHeaven"
+            };
+            SongData aJourneyToHeaven = new SongData("A Journey To Hell", "Lucifer Morningstar", instruments, allCues, clipNames);
+            // Creating binary file
+            formatter.Serialize(stream, aJourneyToHeaven);
+            stream.Close();
+        }
+
+        //Save reference txt
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/saveFiles.txt"))
         {
             StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/saveFiles.txt", false);
             writer.WriteLine("AJourneyToHeaven.data");
+            writer.WriteLine("AJourneyToHell.data");
             writer.Close();
         }
-        
+
         //Get the timestamp of of completion time
         if(Time.time < minimumLogoTime)
         {
@@ -84,7 +115,7 @@ public class Preloader : MonoBehaviour
                 SceneManager.LoadScene("Menu");
             }
         }
-        
+
     }
 
     List<float> aJourneyToHeavenCues()
