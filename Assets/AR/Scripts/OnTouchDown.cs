@@ -22,7 +22,7 @@ public class OnTouchDown : MonoBehaviour
 
 
     //Dictionary relating the fingerIDs to the info we need
-    private Dictionary<int, TouchInfo> touchDict; 
+    private Dictionary<int, TouchInfo> touchDict;
     private float dragDistance;  //minimum distance for a swipe to be registered
 
     private void Start()
@@ -32,7 +32,7 @@ public class OnTouchDown : MonoBehaviour
     }
 
     void Update() {
-        
+
         for (int i = 0; i < Input.touchCount; ++i)
         {
             Touch touch = Input.GetTouch(i);
@@ -86,5 +86,3 @@ public class OnTouchDown : MonoBehaviour
         }
     }
 }
-
-

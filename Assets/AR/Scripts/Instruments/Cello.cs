@@ -3,24 +3,8 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class Cello : MonoBehaviour
+public class Cello : InstrumentControl
 {
-    AudioSource m_MyAudioSource;
-    AudioSource cueOutMistake;
-    public AudioClip mistakeSound;
-    MeshRenderer myRenderer;
-    List<float> cues;
-    int cueIndex;
-    // Start is called before the first frame update
-    void Start()
-    {
-        m_MyAudioSource = GetComponent<AudioSource>();
-        cueIndex = 0;
-        cueOutMistake = gameObject.AddComponent<AudioSource>();
-        cueOutMistake.clip = mistakeSound;
-        myRenderer = GetComponent<MeshRenderer>();
-        myRenderer.material.color = Color.black; 
-    }
 
     public void Initialise(List<float> inputCues, string clipName)
     {
@@ -53,7 +37,7 @@ public class Cello : MonoBehaviour
                 myRenderer.material.color = Color.green;
             }
         }
-        
+
     }
 
     public void OnTap(){
@@ -65,7 +49,7 @@ public class Cello : MonoBehaviour
                 userCueOut();
             }
         }
-        
+
     }
 
     public void OnSwipeUp()

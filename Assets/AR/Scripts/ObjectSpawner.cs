@@ -35,6 +35,8 @@ public class ObjectSpawner : MonoBehaviour
     private Dictionary<string, Button> buttonReferenceDict;
     private Dictionary<string, Button> buttonDict;
 
+    public Button pauseButton;
+
 
     void Start()
     {
@@ -200,32 +202,26 @@ public class ObjectSpawner : MonoBehaviour
             Debug.Log("ObjectSpawner: AttemptGameStart --- --- All objects placed");
             placementIndicator.gameObject.SetActive(false);
             startButton.gameObject.SetActive(true);
+            startButton.onClick.AddListener(SetPauseActive);
             Dictionary<string, GameObject> allObjects = objectManager.allObjectsSpawned();
             foreach(KeyValuePair<string, GameObject> entry in allObjects)
             {
-                switch (entry.Key)
-                {
-                    case "strings":
-                    startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<Strings>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key]); });
-                    break;
-                    case "cello":
-                    startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<Cello>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key]); });
-                    break;
-                    case "synth":
-                    startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<Synth>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key]); });
-                    break;
-                    case "piano":
-                    startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<Piano>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key]); });
-                    break;
-                }
-                
+                startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControl>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key], SongLoader.BPM); });
             }
             
                
         }
     }
 
-
+    void SetPauseActive()
+    {
+        pauseButton.gameObject.SetActive(true);
+        Dictionary<string, GameObject> allObjects = objectManager.allObjectsSpawned();
+        foreach(KeyValuePair<string, GameObject> entry in allObjects)
+        {
+            pauseButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControl>().PauseMusic(); });
+        }
+    }
 
 
     //void Update()

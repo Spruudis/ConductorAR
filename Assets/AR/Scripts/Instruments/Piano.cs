@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class Piano : MonoBehaviour
+public class Piano : InstrumentControl
 {
     AudioSource m_MyAudioSource;
     AudioSource cueOutMistake;
@@ -19,7 +19,7 @@ public class Piano : MonoBehaviour
         cueOutMistake = gameObject.AddComponent<AudioSource>();
         cueOutMistake.clip = mistakeSound;
         myRenderer = GetComponent<MeshRenderer>();
-        myRenderer.material.color = Color.black; 
+        myRenderer.material.color = Color.black;
     }
 
     public void Initialise(List<float> inputCues, string clipName)
@@ -53,7 +53,7 @@ public class Piano : MonoBehaviour
                 myRenderer.material.color = Color.green;
             }
         }
-        
+
     }
 
     public void OnTap(){
@@ -65,7 +65,7 @@ public class Piano : MonoBehaviour
                 userCueOut();
             }
         }
-        
+
     }
 
     public void OnSwipeUp()

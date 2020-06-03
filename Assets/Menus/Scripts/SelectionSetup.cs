@@ -131,6 +131,7 @@ public class SelectionSetup : MonoBehaviour
         SongLoader.instruments = data.instruments;
         SongLoader.instrumentCues = loadCueDictionary(data.instruments, data.cues);
         SongLoader.clipNames = loadClipNamesDictionary(data.instruments, data.clipNames);
+        SongLoader.BPM = data.BPM;
         SceneManager.LoadScene("Orchestra");
     }
 

@@ -12,12 +12,13 @@ public class SongData
     public List<float> cues;
     public List<string> clipNames;
 
-    public SongData(string Name, string inputAuthor, List<string> instrumentsvar, List<float> inputCues, List<string> inputClipNames)
+    public SongData(string Name, string inputAuthor, List<string> instrumentsvar, List<float> inputCues, List<string> inputClipNames, int inputBPM)
     {
         author = inputAuthor;
         songName = Name;
         instruments = instrumentsvar;
         cues = inputCues;
         clipNames = inputClipNames;
+        BPM = inputBPM;
     }
 }
