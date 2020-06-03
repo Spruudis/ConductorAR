@@ -70,7 +70,7 @@ public class Preloader : MonoBehaviour
                 "Synth_AJourneyToHeaven",
                 "Strings_AJourneyToHeaven"
             };
-            SongData aJourneyToHeaven = new SongData("A Journey To Hell", "Lucifer Morningstar", instruments, allCues, clipNames);
+            SongData aJourneyToHeaven = new SongData("A Journey To Hell", "Lucifer Morningstar", instruments, allCues, clipNames, 50);
             // Creating binary file
             formatter.Serialize(stream, aJourneyToHeaven);
             stream.Close();

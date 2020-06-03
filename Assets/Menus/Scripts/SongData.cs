@@ -11,7 +11,7 @@ public class SongData
     public string author;
     public List<float> cues;
     public List<string> clipNames;
-
+    public int BPM;
     public SongData(string Name, string inputAuthor, List<string> instrumentsvar, List<float> inputCues, List<string> inputClipNames, int inputBPM)
     {
         author = inputAuthor;

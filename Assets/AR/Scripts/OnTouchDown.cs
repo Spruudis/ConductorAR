@@ -40,7 +40,7 @@ public class OnTouchDown : MonoBehaviour
 
             if (touch.phase.Equals(TouchPhase.Began)) //check for the first touch
             {
-                Debug.Log("OnTouchDown: Update --- Touch detected");
+                
                 // Construct a ray from the current touch coordinates
                 RaycastHit hit = new RaycastHit();
                 Ray ray = Camera.main.ScreenPointToRay(touchPosition);
@@ -49,6 +49,7 @@ public class OnTouchDown : MonoBehaviour
                 {
                     TouchInfo touchInfo = new TouchInfo(touchPosition, touchPosition, hit);
                     touchDict.Add(touch.fingerId, touchInfo);
+                    Debug.Log("OnTouchDown: Update --- Touch detected");
                 }
             }
 
