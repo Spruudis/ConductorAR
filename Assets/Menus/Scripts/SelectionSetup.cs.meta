@@ -3,7 +3,19 @@ guid: e55c0deb7f490384486809f7a44e98dd
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - buttonPrefab: {instanceID: 0}
+  - iconPrefab: {instanceID: 0}
+  - ButtonListContent: {instanceID: 0}
+  - synthIconReference: {fileID: 21300000, guid: 1b15877a9d671904eb4374fa68670bae,
+      type: 3}
+  - pianoIconReference: {fileID: 21300000, guid: ad8c1ad04218b294dbc032c957cc88e0,
+      type: 3}
+  - stringsIconReference: {fileID: 21300000, guid: 677af477fac9cb140b391c614e7a258f,
+      type: 3}
+  - celloIconReference: {fileID: 21300000, guid: dc4a1f57b496e3b4b95515b020e10cb9,
+      type: 3}
+  - reserveIconReference: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
