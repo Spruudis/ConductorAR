@@ -37,7 +37,7 @@ public class ObjectSpawner : MonoBehaviour
 
     public Button pauseButton;
 
-
+    public Button restartEndButton;
     void Start()
     {
         placementIndicator = FindObjectOfType<PlacementIndicator>();
@@ -207,6 +207,7 @@ public class ObjectSpawner : MonoBehaviour
             foreach(KeyValuePair<string, GameObject> entry in allObjects)
             {
                 startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControl>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key], SongLoader.BPM); });
+                restartEndButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControl>().RestartMusic(); });
             }
             
                
