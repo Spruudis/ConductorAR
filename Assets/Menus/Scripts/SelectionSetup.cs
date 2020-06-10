@@ -14,7 +14,7 @@ public class SelectionSetup : MonoBehaviour
     public GameObject buttonPrefab;
     public Image iconPrefab;
     public GameObject ButtonListContent;
-    
+
     private Dictionary<string, Sprite> iconDict;
 
     [SerializeField]
@@ -53,7 +53,7 @@ public class SelectionSetup : MonoBehaviour
             // Immediately clean up the reader after this block of code is done.
             // You generally use the "using" statement for potentially memory-intensive objects
             // instead of relying on garbage collection.
-            // (Do not confuse this with the using directive for namespace at the 
+            // (Do not confuse this with the using directive for namespace at the
             // beginning of a class!)
             using (theReader)
             {
@@ -61,7 +61,7 @@ public class SelectionSetup : MonoBehaviour
                 do
                 {
                     line = theReader.ReadLine();
-                    SongData data = null;    
+                    SongData data = null;
 
                     if (line != null)
                     {
@@ -104,7 +104,7 @@ public class SelectionSetup : MonoBehaviour
                     }
                 }
                 while (line != null);
-                // Done reading, close the reader and return true to broadcast success    
+                // Done reading, close the reader and return true to broadcast success
                 theReader.Close();
             }
         }
@@ -114,7 +114,7 @@ public class SelectionSetup : MonoBehaviour
         }
     }
 
-    void loadARScene(int buttonNo) 
+    void loadARScene(int buttonNo)
     {
         SongData data = null;
         Debug.Log("Number: " + buttonNo);
