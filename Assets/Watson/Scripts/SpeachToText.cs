@@ -37,8 +37,9 @@ namespace IBM.Watsson.Examples
         [SerializeField]
         private string _serviceUrl;
         [Tooltip("Object that will analyze the transcribed speech.")]
-        public ToneAnalyzer toneAnalyzer;
+        public WatsonToneAnalyzer toneAnalyzer;
         public Text resultsField;
+        public Fader fader;
         [Header("IAM Authentication")]
         [Tooltip("The IAM apikey.")]
         [SerializeField]
@@ -87,6 +88,10 @@ namespace IBM.Watsson.Examples
             _service.StreamMultipart = true;
 
             Active = true;
+
+            fader.Reveal = true;
+            while (!fader.Finished)
+                yield return null;
             StartRecording();
         }
 
@@ -210,10 +215,20 @@ namespace IBM.Watsson.Examples
                 {
                     foreach (var alt in res.alternatives)
                     {
-                        string text = string.Format("{0} ({1}, {2:0.00})\n", alt.transcript, res.final ? "Final" : "Interim", alt.confidence);
-                        Log.Debug("ExampleStreaming.OnRecognize()", text);
-                        StartCoroutine(toneAnalyzer.AnalyseTone(text));
-                        resultsField.text = text;
+                        if (res.final)
+                        {
+                            string text = alt.transcript;
+                            StartCoroutine(toneAnalyzer.AnalyseTone(text));
+                            resultsField.text = text;
+                            resultsField.color = Color.black;
+                        }
+                        else
+                        {
+                            string text = alt.transcript;
+                            resultsField.text = text;
+                            resultsField.color = Color.white;
+                        }
+                        //string text = string.Format("{0} ({1}, {2:0.00})\n", alt.transcript, res.final ? "Final" : "Interim", alt.confidence);
                     }
 
                     if (res.keywords_result != null && res.keywords_result.keyword != null)
