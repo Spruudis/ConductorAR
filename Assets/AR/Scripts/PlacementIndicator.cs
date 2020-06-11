@@ -13,7 +13,7 @@ public class PlacementIndicator : MonoBehaviour
 
     private GameObject visual;
     private Pose placementPose; //Represents the position where we can place the item
-    private bool showIndicator; 
+    private bool showIndicator;
 
 
     //Store a collection of hits from Raycasting
@@ -44,7 +44,7 @@ public class PlacementIndicator : MonoBehaviour
         sessionOrigin = FindObjectOfType<ARSessionOrigin>(); //Find a reference to the session Origin
 
         //Initialise and fill the dictionary;
-     
+
         referenceDict = new Dictionary<string, GameObject>
         {
             { "synth", synthReference },
@@ -53,7 +53,7 @@ public class PlacementIndicator : MonoBehaviour
             { "cello", celloReference }
         };
 
-        //TODO: instantiate only those children which are present in the scene
+        // TO DO: instantiate only those children which are present in the scene
         visual = transform.GetChild(0).gameObject;
 
         //Hide the placement visual

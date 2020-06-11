@@ -15,7 +15,7 @@ public class Preloader : MonoBehaviour
     void Start()
     {
         Debug.Log("Preloader: Start --- Starting preloading");
-        //Grabbing the only Canvasgroup in the scene 
+        //Grabbing the only Canvasgroup in the scene
         fadeGroup = FindObjectOfType<CanvasGroup>(); //Might break if multiple canvas group are present
         fadeGroup.alpha = 1;
 
@@ -40,11 +40,11 @@ public class Preloader : MonoBehaviour
                 "Piano_AJourneyToHeaven",
                 "Synth_AJourneyToHeaven",
                 "Strings_AJourneyToHeaven"
-            }; 
+            };
             SongData aJourneyToHeaven = new SongData("A Journey To Heaven", "Damien Deshayes", instruments, allCues, clipNames);
             // Creating binary file
             formatter.Serialize(stream, aJourneyToHeaven);
-            stream.Close();  
+            stream.Close();
         }
 
 
@@ -77,14 +77,14 @@ public class Preloader : MonoBehaviour
         }
 
         //Save reference txt
-        if (!System.IO.File.Exists(Application.persistentDataPath + "/saveFiles.txt")) 
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/saveFiles.txt"))
         {
             StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/saveFiles.txt", false);
             writer.WriteLine("AJourneyToHeaven.data");
             writer.WriteLine("AJourneyToHell.data");
             writer.Close();
         }
-        
+
         //Get the timestamp of of completion time
         if(Time.time < minimumLogoTime)
         {
@@ -115,7 +115,7 @@ public class Preloader : MonoBehaviour
                 SceneManager.LoadScene("Menu");
             }
         }
-        
+
     }
 
     List<float> aJourneyToHeavenCues()

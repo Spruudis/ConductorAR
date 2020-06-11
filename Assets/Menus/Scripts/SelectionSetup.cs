@@ -114,6 +114,12 @@ public class SelectionSetup : MonoBehaviour
         }
     }
 
+    public void TriggerOrchestra()
+    {
+        //Load AR Scene
+        SceneManager.LoadScene("Orchestra");
+    }
+
     void loadARScene(int buttonNo)
     {
         SongData data = null;
