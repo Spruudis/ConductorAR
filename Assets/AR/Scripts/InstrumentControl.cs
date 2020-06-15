@@ -26,10 +26,13 @@ public class InstrumentControl : MonoBehaviour
     GameObject endScreen;
     GameObject backButton;
     GameObject pauseButton;
+
+    AnimationScript animationControl;
     // Start is called before the first frame update
     void Start()
     {
         m_MyAudioSource = GetComponent<AudioSource>();
+        animationControl = GetComponent<AnimationScript>();
         cueIndex = 0;
         songInit = false;
         cueAnimationOn = false;
@@ -65,6 +68,7 @@ public class InstrumentControl : MonoBehaviour
                             // and the musicians are already playing
                             // TO-DO: Call Cue in animation function
                             Debug.Log("Cue In animaton called: " + clip);
+                            animationControl.triggerJump();
                         } else {
                             Debug.Log("Cue Out: " + clip);
                             // This is the case for a cue out

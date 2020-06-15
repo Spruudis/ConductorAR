@@ -15,7 +15,7 @@ public class AnimationScript : MonoBehaviour
         animator=GetComponent<Animator>();
     }
 
-    void triggerJump(){
+    public void triggerJump(){
         animator.SetTrigger("Jump");
         counter=0;
     }
@@ -27,6 +27,7 @@ public class AnimationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         animator.SetInteger("Clock",clock);
         animator.SetInteger("Counter",counter);
         clock++;
@@ -38,5 +39,6 @@ public class AnimationScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.X)){
             triggerWave();
         }
+        */
     }
 }
