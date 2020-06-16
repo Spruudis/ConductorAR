@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8823923380922457975}
   - component: {fileID: 5343172776640836252}
   m_Layer: 0
-  m_Name: Strings
+  m_Name: StringsPlacer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -651,7 +651,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e7c6ea1ac924de34eb52aefd3608d22e, type: 2}
+      objectReference: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 832754732602095093, guid: d8d4886433160b44e82001b0fd209a2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 1653962175755511036, guid: d8d4886433160b44e82001b0fd209a2e,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -1051,12 +1056,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 79f36c8ab9e3c463d8c8812f2a5f565b, type: 2}
+      objectReference: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 832754732602095093, guid: d8d4886433160b44e82001b0fd209a2e,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 5fe6127458f8fb64e85d743c29ca4a9e, type: 2}
+      objectReference: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 1653962175755511036, guid: d8d4886433160b44e82001b0fd209a2e,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -1456,7 +1461,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a1dccaf0a0c254a34ae2cd52dbceec23, type: 2}
+      objectReference: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 832754732602095093, guid: d8d4886433160b44e82001b0fd209a2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 1653962175755511036, guid: d8d4886433160b44e82001b0fd209a2e,
         type: 3}
       propertyPath: m_LocalRotation.x
