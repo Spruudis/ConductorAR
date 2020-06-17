@@ -15,6 +15,9 @@ public class SongSelector : MonoBehaviour
     [SerializeField]
     private GameObject button;
 
+    [SerializeField]
+    private GameObject iReccomend;
+
     private Dictionary<string, int> emotionKey =  new Dictionary<string, int>
         {
             { "anger", 0 },
@@ -117,6 +120,7 @@ public class SongSelector : MonoBehaviour
                 stream.Close();
             }
             Debug.Log("SongSelector: Find Match --- test 6:");
+            iReccomend.SetActive(true);
             button.SetActive(true);
             //Setting up the button text
             button.GetComponent<Button>().transform.Find("TextArea/SongName").GetComponentInChildren<Text>().text = data.songName;

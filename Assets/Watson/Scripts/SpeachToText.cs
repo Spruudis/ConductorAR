@@ -153,6 +153,7 @@ namespace IBM.Watsson.Examples
 
         private IEnumerator RecordingHandler()
         {
+
             Log.Debug("ExampleStreaming.RecordingHandler()", "devices: {0}", Microphone.devices);
             _recording = Microphone.Start(_microphoneID, true, _recordingBufferSize, _recordingHZ);
             yield return null;      // let _recordingRoutine get set..
