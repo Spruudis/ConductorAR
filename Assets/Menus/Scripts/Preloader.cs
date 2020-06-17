@@ -16,30 +16,16 @@ public class Preloader : MonoBehaviour
     {
         Debug.Log("Preloader: Start --- Starting preloading");
         //Grabbing the only Canvasgroup in the scene
-        fadeGroup = FindObjectOfType<CanvasGroup>();
+        fadeGroup = FindObjectOfType<CanvasGroup>(); //Might break if multiple canvas group are present
         fadeGroup.alpha = 1;
 
-        string songID;
-        string songName;
-        string songAuthor;
-        int songBPM;
-        List<string> songDataFilenameList = new List<string>();
-
-
         //------ Song: Journey to Heaven by Damien Deshayes ------
-        //Enter song ID here
-        songID = "AJourneyToHeaven"; 
-
-        //if (!System.IO.File.Exists(Application.persistentDataPath + "/" + songID + ".data"))
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/AJourneyToHeaven.data"))
         {
-            Debug.Log("Preloader: Start --- Saving "+ songID +" to persistent memory");
-
-            //------- Enter song data here ---------
-            songName = "A Journey To Heaven";
-            songAuthor = "Damien Deshayes";
-            songBPM = 50;
-
-            //List of instrument IDs that are present in the song
+            Debug.Log("Preloader: Start --- Saving A Journey to heaven to persistent memory");
+            BinaryFormatter formatter = new BinaryFormatter();
+            string path = Application.persistentDataPath + "/AJourneyToHeaven.data";
+            FileStream stream = new FileStream(path, FileMode.Create);
             List<string> instruments = new List<string>()
             {
                 "cello",
@@ -47,34 +33,7 @@ public class Preloader : MonoBehaviour
                 "synth",
                 "strings"
             };
-
-
-            //List of emotions and tones associated with the song
-            //Range for each emotion should be 0 (not sad at all) to 1(definitely sad)
-            List<double> emotions = new List<double>()
-            {
-                //anger
-                0.05,
-                //fear
-                0.3,
-                //joy
-                0.5,
-                //sadness
-                0.6,
-                //analytical
-                0.1,
-                //confident
-                0.3,
-                //tentative
-                0.8
-            };
-
-
-            BinaryFormatter formatter = new BinaryFormatter();
-            string path = Application.persistentDataPath + "/" + songID + ".data";
-            FileStream stream = new FileStream(path, FileMode.Create);
-
-            //List of the mp3 file names for each instrument
+            List<float> allCues = aJourneyToHeavenCues();
             List<string> clipNames = new List<string>()
             {
                 "Cello_AJourneyToHeaven",
@@ -82,40 +41,20 @@ public class Preloader : MonoBehaviour
                 "Synth_AJourneyToHeaven",
                 "Strings_AJourneyToHeaven"
             };
-
-            //List of the the cues for each instrument
-            List<float> allCues = aJourneyToHeavenCues();
-
-            //Creating binary file
-            SongData aJourneyToHeaven = new SongData(songName, songAuthor, instruments, allCues, clipNames, songBPM);
+            SongData aJourneyToHeaven = new SongData("A Journey To Heaven", "Damien Deshayes", instruments, allCues, clipNames, 50);
+            // Creating binary file
             formatter.Serialize(stream, aJourneyToHeaven);
-            stream.Close();
-
-            songDataFilenameList.Add(songID + ".data");
-
-
-            //save the emotions to a seperate file
-            BinaryFormatter formatter2 = new BinaryFormatter();
-            path = Application.persistentDataPath + "/" + songID + ".emo";
-            FileStream stream2 = new FileStream(path, FileMode.Create);
-            formatter2.Serialize(stream2, emotions);
             stream.Close();
         }
 
 
-
         //------ Song: Journey to Hell by Lucifer Morningstar ------
-        //Enter song ID here
-        songID = "AJourneyToHell";
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/AJourneyToHell.data"))
         {
-            Debug.Log("Preloader: Start --- Saving " + songID + " to persistent memory");
-
-            //------- Enter song data here ---------
-            songName = "A Journey To Hell";
-            songAuthor = "Lucifer Morningstar";
-            songBPM = 666;
-
-            //List of instrument IDs that are present in the song
+            Debug.Log("Preloader: Start --- Saving A Journey to Hell to persistent memory");
+            BinaryFormatter formatter = new BinaryFormatter();
+            string path = Application.persistentDataPath + "/AJourneyToHell.data";
+            FileStream stream = new FileStream(path, FileMode.Create);
             List<string> instruments = new List<string>()
             {
                 "drums",
@@ -123,34 +62,7 @@ public class Preloader : MonoBehaviour
                 "bass",
                 "strings"
             };
-
-
-            //List of emotions and tones associated with the song
-            //Range for each emotion should be 0 (not sad at all) to 1(definitely sad)
-            List<double> emotions = new List<double>()
-            {
-                //anger
-                0.9,
-                //fear
-                0.7,
-                //joy
-                0.05,
-                //sadness
-                0.8,
-                //analytical
-                0.05,
-                //confident
-                0.3,
-                //tentative
-                0.2
-            };
-
-
-            BinaryFormatter formatter = new BinaryFormatter();
-            string path = Application.persistentDataPath + "/" + songID + ".data";
-            FileStream stream = new FileStream(path, FileMode.Create);
-
-            //List of the mp3 file names for each instrument
+            List<float> allCues = aJourneyToHeavenCues();
             List<string> clipNames = new List<string>()
             {
                 "Cello_AJourneyToHeaven",
@@ -158,35 +70,18 @@ public class Preloader : MonoBehaviour
                 "Synth_AJourneyToHeaven",
                 "Strings_AJourneyToHeaven"
             };
-
-            //List of the the cues for each instrument
-            List<float> allCues = aJourneyToHeavenCues();
-
-            //Creating binary file
-            SongData aJourneyToHeaven = new SongData(songName, songAuthor, instruments, allCues, clipNames, songBPM);
+            SongData aJourneyToHeaven = new SongData("A Journey To Hell", "Lucifer Morningstar", instruments, allCues, clipNames, 50);
+            // Creating binary file
             formatter.Serialize(stream, aJourneyToHeaven);
-            stream.Close();
-
-            songDataFilenameList.Add(songID + ".data");
-
-
-            //save the emotions to a seperate file
-            BinaryFormatter formatter2 = new BinaryFormatter();
-            path = Application.persistentDataPath + "/" + songID + ".emo";
-            FileStream stream2 = new FileStream(path, FileMode.Create);
-            formatter2.Serialize(stream2, emotions);
             stream.Close();
         }
 
-
         //Save reference txt
-        //if (!System.IO.File.Exists(Application.persistentDataPath + "/saveFiles.txt"))
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/saveFiles.txt"))
         {
             StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/saveFiles.txt", false);
-            foreach(string name in songDataFilenameList){
-                Debug.Log("Preloader: Start --- saving " + name + "to the list of songs");
-                writer.WriteLine(name);
-            }
+            writer.WriteLine("AJourneyToHeaven.data");
+            writer.WriteLine("AJourneyToHell.data");
             writer.Close();
         }
 
@@ -223,14 +118,6 @@ public class Preloader : MonoBehaviour
 
     }
 
-
-
-
-
-    /// <summary>
-    /// Hardcoding of instrument cue timing data
-    /// </summary>
-    /// <returns>Float list of instrument cues seperated by -1 </returns>
     List<float> aJourneyToHeavenCues()
     {
         List<float> allCues = new List<float>();
