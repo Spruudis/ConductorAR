@@ -397,7 +397,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1949799687}
+      - m_Target: {fileID: 843332490}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -1402,7 +1402,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1949799687}
+      - m_Target: {fileID: 843332490}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -1632,7 +1632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &749745413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1793,7 +1793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &843332491
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4498,7 +4498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlanePrefab: {fileID: 4674133659901651974, guid: 17bdca2e581e28a41be1e3e631500b9a,
     type: 3}
-  m_DetectionMode: -1
+  m_DetectionMode: 1
 --- !u!114 &1809111211
 MonoBehaviour:
   m_ObjectHideFlags: 0
