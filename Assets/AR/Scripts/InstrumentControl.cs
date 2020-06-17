@@ -20,7 +20,6 @@ public class InstrumentControl : MonoBehaviour
 
     bool songInit;
     bool songPaused;
-    bool cued;
 
     GameObject canvasRoot;
     GameObject endScreen;
@@ -38,7 +37,6 @@ public class InstrumentControl : MonoBehaviour
         cueAnimationOn = false;
         songPaused = false;
         canvasRoot = GameObject.Find("Canvas");
-        cued = false;
     }
 
     public void Initialise(List<float> inputCues, string clipName, int inputBPM)
@@ -58,62 +56,28 @@ public class InstrumentControl : MonoBehaviour
     void Update()
     {
         if(songInit)
+        // If the song has been initialised, eg the game has started
         {
-            if(cueIndex < cues.Count){
+            if(cueIndex < cues.Count)
+            //Only update if the cue index is less than the number of cues, prevents exception
+            {
                 if((cues[cueIndex] - m_MyAudioSource.time) <= fourBeatsTime){
-                    if(!cueAnimationOn){
-                        cueAnimationOn = true;
-                        if(cueIndex % 2 == 0){
-                            // call animation for cue in. There should be no instance where it's time for a cue in
-                            // and the musicians are already playing
-                            // TO-DO: Call Cue in animation function
-                            Debug.Log("Cue In animaton called: " + clip);
-                            animationControl.triggerJump();
-                        } else {
-                            Debug.Log("Cue Out: " + clip);
-                            // This is the case for a cue out
-                            if(m_MyAudioSource.mute){
-                                // In this case, the avatars are already not playing. Shall we have an animation
-                                // different to the cue out animation just to show that this was when they would
-                                // have cued out?
-                                //Debug.Log("Cue out opportunity missed");
-                                Debug.Log("Musicians already not playing: " + clip);
-                            } else{
-                                // call animation for cue out.
-                                // TO-DO: Call Cue out animation function
-                                //Debug.Log("Cue out animation");
-                                Debug.Log("Cue out animation called: " + clip);
-                            }
-                        }
-                    }
+                // If the song is four beats before the cue, start the animation.
+                    callCueAnimations();
                 }
                 if((m_MyAudioSource.time - cues[cueIndex]) > fourBeatsTime/2){
-                    if(!cued){
-                        if(cueIndex % 2 != 0 && !m_MyAudioSource.mute){
-                            // In this case, the user is late to cue out, so the musicians will stop
-                            // and let's have them have a little grumble
-                            m_MyAudioSource.mute = true;
-                            //TO-DO: Call grumbling animation function
-                            Debug.Log("User does not cue out so musicians must stop themselves");
-                        } else if(cueIndex % 2 == 0 && m_MyAudioSource.mute){
-                            Debug.Log("User does not cue in so musicians have a bit of a grumble");
-                            //TO-DO: Call grumbling animation function
-                        }
-                        cueIndex++;
-                    }
-                    cued = false;
-                    cueAnimationOn = false;
+                // If the song has progressed more than half a bar, call update Cue Status function
+                // The update cue status function checks if the user successfully cued.
+                // If not, then the cue index must be advanced and animations must occur to show
+                // Musicians are not happy 
+                    updateCueStatus();
                 }
             }
 
             if(!m_MyAudioSource.isPlaying && !songPaused){
-                songInit = false;
-                endScreen = canvasRoot.transform.Find("EndMenuBackground").gameObject;
-                backButton = canvasRoot.transform.Find("BackButton").gameObject;
-                pauseButton = canvasRoot.transform.Find("PauseButton").gameObject;
-                endScreen.SetActive(true);
-                backButton.SetActive(false);
-                pauseButton.SetActive(false);
+                // If the song has stopped playing and the user didn't pause it, the game is
+                // over. Call the end game function to end the game.
+                endGame();
             }
         }
     }
@@ -123,21 +87,20 @@ public class InstrumentControl : MonoBehaviour
         if(m_MyAudioSource.isPlaying && cueIndex < cues.Count)
         {
             Debug.Log("Tapped on: " + clip);
-            if(Math.Abs(cues[cueIndex] - m_MyAudioSource.time) < fourBeatsTime/4 && !cued){
-                Debug.Log("Cue on time: " + clip);
-                m_MyAudioSource.mute = !m_MyAudioSource.mute;
-                cueIndex++;
-                cued = true;
-                // We could have a lovely happy animation or something cute
-                // TO-DO: Call happy animation function
-            }  else if(Math.Abs(cues[cueIndex] - m_MyAudioSource.time) < fourBeatsTime/2 && !cued){
-                m_MyAudioSource.mute = !m_MyAudioSource.mute;
-                m_MyAudioSource.mute = false;
-                Debug.Log("Slightly early/late cue");
-                cueIndex++;
-                cued = true;
-                // Call disgruntled animation as slightly early/late
-                // TO-DO: CALL DISGRUNTLED ANIMATION
+            if(Math.Abs(cues[cueIndex] - m_MyAudioSource.time) < fourBeatsTime/4){
+                // If the user has cued in within a beat of the correct cue timing, this is perfect
+                correctCueTiming();
+            }  else if(Math.Abs(cues[cueIndex] - m_MyAudioSource.time) < fourBeatsTime/2){
+                // If the user has cued in within two beats of the correct cue timing, this is slightly
+                // off and hence it is slightly off cue timing. The musicians have a grumble but do the correct
+                // cue action
+                slightlyOffCueTiming();
+            } else{
+                noCueActions();
+            }
+        }
+        
+    }
 
     private void callCueAnimations()
     {
@@ -147,7 +110,7 @@ public class InstrumentControl : MonoBehaviour
         // If it hasn't then the function will run, whereas if it has then there is no need to do anything.
             cueAnimationOn = true;
             if(cueIndex % 2 == 0){
-            // call animation for cue in. There should be no instance where it's time for a cue in
+            // call animation for cue in. There should be no instance where it's time for a cue in 
             // and the musicians are already playing
                 Debug.Log("Cue In animation called: " + clip);
                // animationControl.triggerJump(1/fourBeatsTime);
@@ -155,26 +118,18 @@ public class InstrumentControl : MonoBehaviour
                 Debug.Log("Cue Out: " + clip);
                 // This is the case for a cue out
                 if(m_MyAudioSource.mute){
-                    if(cueIndex % 2 == 0){
-                        // nothing to cue in, avatars have a bit of a grumble
-                        // TO-DO: Add avatars grumble animation function call
-                    } else{
-                        m_MyAudioSource.mute = false;
-                        // Turn off constant grumbling, since the avatars should be grumbling while not playing
-                        // TO-DO: Turn off Grumbling animation function
-                        Debug.Log("User Cued in " + clip);
-                    }
+                // In this case, the avatars are already not playing. Shall we have an animation
+                // different to the cue out animation just to show that this was when they would
+                // have cued out?
+                    Debug.Log("Musicians already not playing: " + clip);
                 } else{
-                    if(cueIndex % 2 != 0){
-                        m_MyAudioSource.mute = true;
-                        // Turn on constant grumbling, they're a bit annoyed you've cut them off
-                        // TO-DO: Turn on constant grumbling function, if we can make this constant
-                        Debug.Log("User Cued out " + clip);
-                    }
+                // call animation for cue out. 
+                // TO-DO: Call Cue out animation function
+                // Debug.Log("Cue out animation");
+                    Debug.Log("Cue out animation called: " + clip);
                 }
             }
         }
-
     }
 
     private void updateCueStatus()
@@ -187,13 +142,13 @@ public class InstrumentControl : MonoBehaviour
             // and let's have them have a little grumble
             m_MyAudioSource.mute = true;
             Debug.Log("User does not cue out so musicians must stop themselves");
-           // animationControl.triggerAnnoyed();
-           // animationControl.triggerIdle();
+          //  animationControl.triggerAnnoyed();
+          //  animationControl.triggerIdle();
         } else if(cueIndex % 2 == 0 && m_MyAudioSource.mute){
             // In this case, the user did not cue in so the musicians have a grumble but stay silent.
             Debug.Log("User does not cue in so musicians have a bit of a grumble");
-           // animationControl.triggerAnnoyed();
-           // animationControl.triggerWave();
+          //  animationControl.triggerAnnoyed();
+          //  animationControl.triggerWave();
         }
         cueIndex++;
         cueAnimationOn = false;
@@ -222,7 +177,7 @@ public class InstrumentControl : MonoBehaviour
         Debug.Log("Cue on time: " + clip);
         if(cueIndex % 2 == 0){
             // If it was a cue in, start musicians playing animation
-           // animationControl.triggerPlay();
+          //  animationControl.triggerPlay();
         } else{
             // If it was a cue out, start musicians idle animation
           //  animationControl.triggerIdle();
@@ -245,21 +200,21 @@ public class InstrumentControl : MonoBehaviour
         Debug.Log("Slightly early/late cue");
 
         // Trigger annoyed animation
-       // animationControl.triggerAnnoyed();
+      //  animationControl.triggerAnnoyed();
         // Start/stop playing
         m_MyAudioSource.mute = !m_MyAudioSource.mute;
         if(cueIndex % 2 == 0){
             // If it was a cue in, start playing animation
-         //   animationControl.triggerPlay();
+           // animationControl.triggerPlay();
         } else{
             // If it was a cue out, start idle animation
-         //   animationControl.triggerIdle();
+          //  animationControl.triggerIdle();
         }
         cueIndex++;
         cueAnimationOn = false;
     }
 
-    public void OnSwipeDown()
+    private void noCueActions()
     {
         // This function is called when a cue in animation has not been played but the user experiments
         // with the cueing in and out of the instruments. For example, the musicians are playing but
@@ -268,10 +223,10 @@ public class InstrumentControl : MonoBehaviour
         if(m_MyAudioSource.mute){
             // If the musicians are not playing
             if(cueIndex % 2 == 0){
-                // If the next cue is a cue in, then at present there is nothing to cue in,
+                // If the next cue is a cue in, then at present there is nothing to cue in, 
                 // Avatars have a bit of a grumble
                 Debug.Log("Nothing to cue in: Trigger Annoyed animation");
-             //   animationControl.triggerAnnoyed();
+              //  animationControl.triggerAnnoyed();
             } else{
                 // If the next cue is a cue out, then the musicians can curently be playing something but aren't.
                 // The musicians start playing again and they stop waving.
@@ -288,8 +243,8 @@ public class InstrumentControl : MonoBehaviour
                 m_MyAudioSource.mute = true;
                 // Turn on constant waving and annoyed animation, they're a bit annoyed you've cut them off
                 Debug.Log("You've cut off the musicians: Trigger annoyed and wave");
-             //   animationControl.triggerAnnoyed();
-             //   animationControl.triggerWave();
+              //  animationControl.triggerAnnoyed();
+              //  animationControl.triggerWave();
             }
         }
     }
@@ -310,6 +265,16 @@ public class InstrumentControl : MonoBehaviour
     {
         m_MyAudioSource.Play();
         songInit = true;
+    }
+
+    public void OnSwipeUp()
+    {
+        Debug.Log("Cello: OnSwipeUp: recieved swipe up gesture command");
+    }
+
+    public void OnSwipeDown()
+    {
+        Debug.Log("Cello: OnSwipeDown: recieved swipe down gesture command");
     }
 
 }
