@@ -135,6 +135,11 @@ public class SelectionSetup : MonoBehaviour
         SceneManager.LoadScene("Orchestra");
     }
 
+    public void loadWatsonScene()
+    {
+        SceneManager.LoadScene("Watson");
+    }
+
     Dictionary<string, List<float>> loadCueDictionary(List<string> instruments, List<float> cues)
     {
         Dictionary<string, List<float>> instrumentCues = new Dictionary<string, List<float>>();
