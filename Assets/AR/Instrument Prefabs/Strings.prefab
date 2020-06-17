@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: -8381539150679064472}
   - component: {fileID: -5390408682201187568}
   - component: {fileID: 6582527742466948076}
-  - component: {fileID: 8985915377603061028}
-  - component: {fileID: -8823923380922457975}
+  - component: {fileID: -6162361623904212932}
+  - component: {fileID: -621404426172520906}
   m_Layer: 0
   m_Name: Strings
   m_TagString: Untagged
@@ -168,7 +168,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8985915377603061028
+--- !u!114 &-6162361623904212932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,10 +177,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2701047675304141227}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4bed50b5449842bbb664251cc6fd31b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1175ea29de5578d44894b63379958061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-8823923380922457975
+--- !u!114 &-621404426172520906
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2701047675304141227}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7118744741cd63c4b980222579064929, type: 3}
+  m_Script: {fileID: 11500000, guid: 53c8381f28ae1044099cfbbd6e282604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2701047674997227693

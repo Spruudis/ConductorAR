@@ -1098,8 +1098,8 @@ GameObject:
   - component: {fileID: 7723921442924911418}
   - component: {fileID: 8313768903497790761}
   - component: {fileID: -7081185830621089499}
-  - component: {fileID: 800736816646944826}
-  - component: {fileID: -390093413964539322}
+  - component: {fileID: -3705659034069535163}
+  - component: {fileID: -7922723886948067794}
   m_Layer: 0
   m_Name: Cello
   m_TagString: Untagged
@@ -1255,7 +1255,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &800736816646944826
+--- !u!114 &-3705659034069535163
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1264,10 +1264,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7723921442924910949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7118744741cd63c4b980222579064929, type: 3}
+  m_Script: {fileID: 11500000, guid: 1175ea29de5578d44894b63379958061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-390093413964539322
+--- !u!114 &-7922723886948067794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7723921442924910949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4bed50b5449842bbb664251cc6fd31b, type: 3}
+  m_Script: {fileID: 11500000, guid: 53c8381f28ae1044099cfbbd6e282604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7723921442924910951

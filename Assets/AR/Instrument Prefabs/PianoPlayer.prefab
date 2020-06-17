@@ -200,8 +200,8 @@ GameObject:
   - component: {fileID: 7962588479432799300}
   - component: {fileID: 6790354266301597054}
   - component: {fileID: -6031917335040033486}
-  - component: {fileID: -5269821556194078910}
-  - component: {fileID: 970344508959860724}
+  - component: {fileID: -789194695174893421}
+  - component: {fileID: -1682075109584106691}
   m_Layer: 0
   m_Name: PianoPlayer
   m_TagString: Untagged
@@ -356,7 +356,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-5269821556194078910
+--- !u!114 &-789194695174893421
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -365,10 +365,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7962588479432799801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4bed50b5449842bbb664251cc6fd31b, type: 3}
+  m_Script: {fileID: 11500000, guid: 53c8381f28ae1044099cfbbd6e282604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &970344508959860724
+--- !u!114 &-1682075109584106691
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -377,7 +377,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7962588479432799801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7118744741cd63c4b980222579064929, type: 3}
+  m_Script: {fileID: 11500000, guid: 1175ea29de5578d44894b63379958061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7962588479432799814

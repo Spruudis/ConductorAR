@@ -11,17 +11,17 @@ public class AnimationScript : MonoBehaviour
         animator=GetComponent<Animator>();
     }
 
-    void triggerJump(){animator.SetTrigger("Jump");}
-    void triggerWave(){animator.SetTrigger("Wave");}
-    void triggerHappy(){animator.SetTrigger("Happy");}
-    void triggerSad(){animator.SetTrigger("Sad");}
-    void triggerCountdown(){animator.SetTrigger("Countdown");}
-    void triggerSit(){animator.SetTrigger("Sit");}
+    public void triggerJump(){animator.SetTrigger("Jump");}
+    public void triggerWave(){animator.SetTrigger("Wave");}
+    public void triggerHappy(){animator.SetTrigger("Happy");}
+    public void triggerSad(){animator.SetTrigger("Sad");}
+    public void triggerCountdown(){animator.SetTrigger("Countdown");}
+    public void triggerSit(){animator.SetTrigger("Sit");}
    /* void toggleStand(){
         if(animator.GetBool("Stand")==true){animator.SetBool("Stand",false);}
         else{animator.SetBool("Stand",true);}
     } */
-    void togglePlay(){
+    public void togglePlay(){
         if(animator.GetBool("Play")==true){animator.SetBool("Play",false);}
         else{animator.SetBool("Play",true);}
     }
