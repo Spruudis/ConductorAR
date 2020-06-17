@@ -15,25 +15,13 @@ public class AnimationScript : MonoBehaviour
         animator=GetComponent<Animator>();
     }
 
-    public void triggerJump(float speed){
-        animator.speed = speed;
+    public void triggerJump(){
         animator.SetTrigger("Jump");
+        counter=0;
     }
-    public void triggerWave(){
-        animator.speed = 1;
+    void triggerWave(){
         animator.SetTrigger("Wave");
-    }
-    public void triggerPlay(){
-        animator.speed = 1;
-        animator.SetTrigger("Play");
-    }
-    public void triggerAnnoyed(){
-        animator.speed = 1;
-        animator.SetTrigger("Annoyed");
-    }
-    public void triggerIdle(){
-        animator.speed = 1;
-        animator.SetTrigger("Idle");
+        counter=0;
     }
 
     // Update is called once per frame

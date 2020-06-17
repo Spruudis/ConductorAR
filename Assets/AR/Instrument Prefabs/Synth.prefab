@@ -978,7 +978,6 @@ GameObject:
   - component: {fileID: 150420276879362872}
   - component: {fileID: -2132175383492617144}
   - component: {fileID: 9039316127528756118}
-  - component: {fileID: 7953128709470131595}
   m_Layer: 0
   m_Name: Synth
   m_TagString: Untagged
@@ -1039,7 +1038,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 213492
+  MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1157,20 +1156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7118744741cd63c4b980222579064929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &7953128709470131595
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6687616064441568217}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.7417912
-  m_Height: 1.6433442
-  m_Direction: 1
-  m_Center: {x: 0.046557847, y: 0.5608773, z: 0.22349669}
 --- !u!1 &7275882102805970823
 GameObject:
   m_ObjectHideFlags: 0

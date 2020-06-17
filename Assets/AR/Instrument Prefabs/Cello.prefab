@@ -397,7 +397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7723921442924910781}
   m_LocalRotation: {x: 0.43903208, y: -0.11763832, z: 0.70623094, w: 0.5428168}
-  m_LocalPosition: {x: -0.166, y: 0.026, z: -0.024}
+  m_LocalPosition: {x: -0.14597191, y: 3.1980463e-11, z: -8.927275e-11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7723921442924911205}
@@ -1100,7 +1100,6 @@ GameObject:
   - component: {fileID: -7081185830621089499}
   - component: {fileID: 800736816646944826}
   - component: {fileID: -390093413964539322}
-  - component: {fileID: 6084811709442218878}
   m_Layer: 0
   m_Name: Cello
   m_TagString: Untagged
@@ -1280,20 +1279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bed50b5449842bbb664251cc6fd31b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &6084811709442218878
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7723921442924910949}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.36151826
-  m_Height: 1.3933008
-  m_Direction: 1
-  m_Center: {x: -0.048234016, y: 0.5980811, z: 0.049222857}
 --- !u!1 &7723921442924910951
 GameObject:
   m_ObjectHideFlags: 0
