@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class InstrumentControl : MonoBehaviour
+public class InstrumentControlAlt : MonoBehaviour
 {
     AudioSource m_MyAudioSource;
     // List of cues
@@ -26,12 +26,12 @@ public class InstrumentControl : MonoBehaviour
     GameObject backButton;
     GameObject pauseButton;
 
-    AnimationScript animationControl;
+    AnimationScriptAlt animationControl;
     // Start is called before the first frame update
     void Start()
     {
         m_MyAudioSource = GetComponent<AudioSource>();
-        animationControl = GetComponent<AnimationScript>();
+        animationControl = GetComponent<AnimationScriptAlt>();
         cueIndex = 0;
         songInit = false;
         cueAnimationOn = false;
@@ -113,7 +113,7 @@ public class InstrumentControl : MonoBehaviour
             // call animation for cue in. There should be no instance where it's time for a cue in 
             // and the musicians are already playing
                 Debug.Log("Cue In animation called: " + clip);
-               // animationControl.triggerJump(1/fourBeatsTime);
+                animationControl.triggerJump(1/fourBeatsTime);
             } else {
                 Debug.Log("Cue Out: " + clip);
                 // This is the case for a cue out
@@ -122,13 +122,11 @@ public class InstrumentControl : MonoBehaviour
                 // different to the cue out animation just to show that this was when they would
                 // have cued out?
                     Debug.Log("Musicians already not playing: " + clip);
-                    animationControl.triggerSit();
                 } else{
                 // call animation for cue out. 
                 // TO-DO: Call Cue out animation function
                 // Debug.Log("Cue out animation");
                     Debug.Log("Cue out animation called: " + clip);
-                    animationControl.triggerCountdown();
                 }
             }
         }
@@ -144,16 +142,12 @@ public class InstrumentControl : MonoBehaviour
             // and let's have them have a little grumble
             m_MyAudioSource.mute = true;
             Debug.Log("User does not cue out so musicians must stop themselves");
-          //  animationControl.triggerAnnoyed();
-          //  animationControl.triggerIdle();
-            animationControl.triggerSad();
-            animationControl.togglePlay();
+            animationControl.triggerAnnoyed();
+            animationControl.triggerIdle();
         } else if(cueIndex % 2 == 0 && m_MyAudioSource.mute){
             // In this case, the user did not cue in so the musicians have a grumble but stay silent.
             Debug.Log("User does not cue in so musicians have a bit of a grumble");
-          //  animationControl.triggerAnnoyed();
-          //  animationControl.triggerWave();
-            animationControl.triggerSad();
+            animationControl.triggerAnnoyed();
             animationControl.triggerWave();
         }
         cueIndex++;
@@ -181,17 +175,13 @@ public class InstrumentControl : MonoBehaviour
         // and starts or stops the musicians playing depending on that fact. Furthermore, it changes the
         // boolean value cued to true, letting the update know that the user correctly cued in.
         Debug.Log("Cue on time: " + clip);
-        /*
         if(cueIndex % 2 == 0){
             // If it was a cue in, start musicians playing animation
-          //  animationControl.triggerPlay();
-            animationControl.togglePlay();
+            animationControl.triggerPlay();
         } else{
             // If it was a cue out, start musicians idle animation
-          //  animationControl.triggerIdle();
-            animationControl.togglePlay();
-        }*/
-        animationControl.togglePlay();
+            animationControl.triggerIdle();
+        }
         m_MyAudioSource.mute = !m_MyAudioSource.mute;
         // update cue index to look at next cue
         cueIndex++;
@@ -210,18 +200,16 @@ public class InstrumentControl : MonoBehaviour
         Debug.Log("Slightly early/late cue");
 
         // Trigger annoyed animation
-      //  animationControl.triggerAnnoyed();
+        animationControl.triggerAnnoyed();
         // Start/stop playing
         m_MyAudioSource.mute = !m_MyAudioSource.mute;
-        /*
         if(cueIndex % 2 == 0){
             // If it was a cue in, start playing animation
-           // animationControl.triggerPlay();
+            animationControl.triggerPlay();
         } else{
             // If it was a cue out, start idle animation
-          //  animationControl.triggerIdle();
-        } */
-        animationControl.togglePlay();
+            animationControl.triggerIdle();
+        }
         cueIndex++;
         cueAnimationOn = false;
     }
@@ -238,17 +226,14 @@ public class InstrumentControl : MonoBehaviour
                 // If the next cue is a cue in, then at present there is nothing to cue in, 
                 // Avatars have a bit of a grumble
                 Debug.Log("Nothing to cue in: Trigger Annoyed animation");
-              //  animationControl.triggerAnnoyed();
-                animationControl.triggerSad();
+                animationControl.triggerAnnoyed();
             } else{
                 // If the next cue is a cue out, then the musicians can curently be playing something but aren't.
                 // The musicians start playing again and they stop waving.
                 m_MyAudioSource.mute = false;
                 Debug.Log("Musicians start playing again: Turn off waving and turn on playing");
                 // Turn off constant waving, since the avatars should be waving when they can be playing
-              //  animationControl.triggerPlay();
-                animationControl.togglePlay();
-                animationControl.triggerSit();
+                animationControl.triggerPlay();
             }
         } else{
             // If the musicians are playing
@@ -258,10 +243,7 @@ public class InstrumentControl : MonoBehaviour
                 m_MyAudioSource.mute = true;
                 // Turn on constant waving and annoyed animation, they're a bit annoyed you've cut them off
                 Debug.Log("You've cut off the musicians: Trigger annoyed and wave");
-              //  animationControl.triggerAnnoyed();
-              //  animationControl.triggerWave();
-                animationControl.togglePlay();
-                animationControl.triggerSad();
+                animationControl.triggerAnnoyed();
                 animationControl.triggerWave();
             }
         }
