@@ -82,6 +82,7 @@ public class SelectionSetup : MonoBehaviour
                         //Setting up the button text
                         button.transform.Find("TextArea/SongName").GetComponentInChildren<Text>().text = data.songName;
                         button.transform.Find("TextArea/Artist").GetComponentInChildren<Text>().text = data.author;
+                        button.transform.Find("TextArea/Length").GetComponentInChildren<Text>().text = data.songLengthMin + ":" + data.songLengthSec;
 
                         //Setting up the button icons
                         foreach (string instrument in data.instruments){

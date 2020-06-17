@@ -23,6 +23,8 @@ public class Preloader : MonoBehaviour
         string songName;
         string songAuthor;
         int songBPM;
+        int songLengthMin;
+        int songLengthSec;
         List<string> songDataFilenameList = new List<string>();
 
 
@@ -38,6 +40,8 @@ public class Preloader : MonoBehaviour
             songName = "A Journey To Heaven";
             songAuthor = "Damien Deshayes";
             songBPM = 50;
+            songLengthMin = 5;
+            songLengthSec = 46;
 
             //List of instrument IDs that are present in the song
             List<string> instruments = new List<string>()
@@ -87,7 +91,7 @@ public class Preloader : MonoBehaviour
             List<float> allCues = aJourneyToHeavenCues();
 
             //Creating binary file
-            SongData aJourneyToHeaven = new SongData(songName, songAuthor, instruments, allCues, clipNames, songBPM);
+            SongData aJourneyToHeaven = new SongData(songName, songAuthor, instruments, allCues, clipNames, songBPM, songLengthMin, songLengthSec);
             formatter.Serialize(stream, aJourneyToHeaven);
             stream.Close();
 
@@ -114,6 +118,8 @@ public class Preloader : MonoBehaviour
             songName = "A Journey To Hell";
             songAuthor = "Lucifer Morningstar";
             songBPM = 666;
+            songLengthMin = 6;
+            songLengthSec = 66;
 
             //List of instrument IDs that are present in the song
             List<string> instruments = new List<string>()
@@ -163,7 +169,7 @@ public class Preloader : MonoBehaviour
             List<float> allCues = aJourneyToHeavenCues();
 
             //Creating binary file
-            SongData aJourneyToHeaven = new SongData(songName, songAuthor, instruments, allCues, clipNames, songBPM);
+            SongData aJourneyToHeaven = new SongData(songName, songAuthor, instruments, allCues, clipNames, songBPM, songLengthMin, songLengthSec);
             formatter.Serialize(stream, aJourneyToHeaven);
             stream.Close();
 
