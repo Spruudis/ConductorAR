@@ -1100,6 +1100,7 @@ GameObject:
   - component: {fileID: -7081185830621089499}
   - component: {fileID: -3705659034069535163}
   - component: {fileID: -7922723886948067794}
+  - component: {fileID: 2828476601575740747}
   m_Layer: 0
   m_Name: Cello
   m_TagString: Untagged
@@ -1279,6 +1280,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c8381f28ae1044099cfbbd6e282604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &2828476601575740747
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7723921442924910949}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.43155268
+  m_Height: 1.3786899
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.6229258, z: 0.06844729}
 --- !u!1 &7723921442924910951
 GameObject:
   m_ObjectHideFlags: 0
