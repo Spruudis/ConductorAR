@@ -167,4 +167,9 @@ public class SelectionSetup : MonoBehaviour
         return clips;
     }
 
+    public void LoadWatson()
+    {
+        SceneManager.LoadScene("Watson");
+    }
+
 }

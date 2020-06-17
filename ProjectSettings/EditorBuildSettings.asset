@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Menus/Scenes/SongSelection.unity
     guid: 7f91d403478435643bae400048a4b5d9
+  - enabled: 1
+    path: Assets/Watson/Watson.unity
+    guid: db670099a362c814f8a8fb31e9ad2ca5
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: b4061da401d7e9c48bdec5b079c37414,
       type: 2}
