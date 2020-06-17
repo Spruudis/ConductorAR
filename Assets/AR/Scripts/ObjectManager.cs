@@ -87,7 +87,7 @@ public class ObjectManager : MonoBehaviour
     {
         if (!spawnedObjectsDict.ContainsKey(targetObject)){ //Object is not in the dictionary
 
-            spawnedObjectsDict.Add(targetObject, Instantiate(objectToSpawn, position, rotation)); //Instantiate and add the object to the dict
+            spawnedObjectsDict.Add(targetObject, Instantiate(objectToSpawn, position, rotation*Quaternion.Euler(0,180f,0))); //Instantiate and add the object to the dict
             Debug.Log("New object spawned");
             return true;
         }
