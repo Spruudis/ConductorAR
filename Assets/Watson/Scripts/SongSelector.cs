@@ -125,6 +125,7 @@ public class SongSelector : MonoBehaviour
             //Setting up the button text
             button.GetComponent<Button>().transform.Find("TextArea/SongName").GetComponentInChildren<Text>().text = data.songName;
             button.GetComponent<Button>().transform.Find("TextArea/Artist").GetComponentInChildren<Text>().text = data.author;
+            button.GetComponent<Button>().transform.Find("TextArea/Length").GetComponentInChildren<Text>().text = data.songLengthMin + ":" + data.songLengthSec;
 
             ////Setting up the button icons
             //foreach (string instrument in data.instruments)
