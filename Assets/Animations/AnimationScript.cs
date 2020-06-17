@@ -5,33 +5,36 @@ using UnityEngine;
 public class AnimationScript : MonoBehaviour
 {
     Animator animator;
-    int framerate=64;
-    float idletime=0;
 	// Start is called before the first frame update
     void Start()
     {
         animator=GetComponent<Animator>();
     }
 
-    void triggerJump(){
-        animator.SetTrigger("Jump");
-        idletime=0;
+    void triggerJump(){animator.SetTrigger("Jump");}
+    void triggerWave(){animator.SetTrigger("Wave");}
+    void triggerHappy(){animator.SetTrigger("Happy");}
+    void triggerSad(){animator.SetTrigger("Sad");}
+    void triggerCountdown(){animator.SetTrigger("Countdown");}
+    void toggleStand(){
+        if(animator.GetBool("Stand")==true){animator.SetBool("Stand",false);}
+        else{animator.SetBool("Stand",true);}
     }
-    void triggerWave(){
-        animator.SetTrigger("Wave");
-        idletime=0;
+    void togglePlay(){
+        if(animator.GetBool("Play")==true){animator.SetBool("Play",false);}
+        else{animator.SetBool("Play",true);}
     }
 
     // Update is called once per frame
     void Update()
     {
-        idletime+=Time.deltaTime;
-        animator.SetFloat("Clock",idletime);
-        if(Input.GetKeyDown(KeyCode.Space)){
-            triggerJump();
-        }
-        if(Input.GetKeyDown(KeyCode.X)){
-            triggerWave();
-        }
+        animator.SetFloat("Clock",animator.GetFloat("Clock")+Time.deltaTime);
+        if(Input.GetKeyDown(KeyCode.J)){triggerJump();}
+        if(Input.GetKeyDown(KeyCode.W)){triggerWave();}
+        if(Input.GetKeyDown(KeyCode.H)){triggerHappy();}
+        if(Input.GetKeyDown(KeyCode.S)){triggerSad();}
+        if(Input.GetKeyDown(KeyCode.C)){triggerCountdown();}
+        if(Input.GetKeyDown(KeyCode.UpArrow)){toggleStand();}
+        if(Input.GetKeyDown(KeyCode.P)){togglePlay();}
     }
 }
