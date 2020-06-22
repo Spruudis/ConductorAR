@@ -127,6 +127,7 @@ public class InstrumentControlAlt : MonoBehaviour
                 // TO-DO: Call Cue out animation function
                 // Debug.Log("Cue out animation");
                     Debug.Log("Cue out animation called: " + clip);
+                    animationControl.triggerJump(1/fourBeatsTime);
                 }
             }
         }
