@@ -429,8 +429,6 @@ public class Preloader : MonoBehaviour
         //};
         List<float> stringsCues = new List<float>(){
             27,
-            72,
-            77,
             244,
             250,
             308
