@@ -50,6 +50,7 @@ public class InstrumentControlAlt : MonoBehaviour
         m_MyAudioSource.clip = songClip;
         m_MyAudioSource.Play();
         songInit = true;
+        cueIndex = 0;
     }
 
     // Update is called once per frame
