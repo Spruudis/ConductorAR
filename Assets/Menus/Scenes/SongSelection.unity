@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.09596325, b: 0.3207547, a: 1}
+  m_Color: {r: 0.28235295, g: 0.28235295, b: 0.28235295, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1244,6 +1244,18 @@ MonoBehaviour:
   celloIconReference: {fileID: 21300000, guid: dc4a1f57b496e3b4b95515b020e10cb9, type: 3}
   reserveIconReference: {fileID: 21300000, guid: 4ccee068875f47b43b7fe260827eccfb,
     type: 3}
+  fluteIconReference: {fileID: 21300000, guid: efdae4c2c576766499ecf7834ec3374c, type: 3}
+  oboeIconReference: {fileID: 21300000, guid: 1054f3d7ff200db4fae782f799a12ea1, type: 3}
+  clarnetIconReference: {fileID: 21300000, guid: c0ce164b7e9eac4418474cfd172f0ae2,
+    type: 3}
+  bassoonIconReference: {fileID: 21300000, guid: 283619faf0b72d448bd585a7e23b1d95,
+    type: 3}
+  hornIconReference: {fileID: 21300000, guid: cba2c1c9db0dd97489bbe42c7c0204f2, type: 3}
+  trumpetIconReference: {fileID: 21300000, guid: 8247e94cfeddc8a4d81243afc3c35f63,
+    type: 3}
+  tromboneIconReference: {fileID: 21300000, guid: 030b3c37bbed62a4fb0e28a10519faa9,
+    type: 3}
+  tubaIconReference: {fileID: 21300000, guid: 00262f262499c5149aa791435bea8dbc, type: 3}
 --- !u!4 &1726798906
 Transform:
   m_ObjectHideFlags: 0

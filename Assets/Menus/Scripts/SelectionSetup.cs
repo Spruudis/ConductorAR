@@ -27,6 +27,23 @@ public class SelectionSetup : MonoBehaviour
     private Sprite celloIconReference;
     [SerializeField]
     private Sprite reserveIconReference;
+    [SerializeField]
+    private Sprite fluteIconReference;
+    [SerializeField]
+    private Sprite oboeIconReference;
+    [SerializeField]
+    private Sprite clarnetIconReference;
+    [SerializeField]
+    private Sprite bassoonIconReference;
+    [SerializeField]
+    private Sprite hornIconReference;
+    [SerializeField]
+    private Sprite trumpetIconReference;
+    [SerializeField]
+    private Sprite tromboneIconReference;
+    [SerializeField]
+    private Sprite tubaIconReference;
+
 
     void Start()
     {
@@ -38,6 +55,14 @@ public class SelectionSetup : MonoBehaviour
             { "synth", synthIconReference },
             { "piano", pianoIconReference },
             { "strings", stringsIconReference },
+            { "flute", fluteIconReference },
+            { "oboe", oboeIconReference },
+            { "clarnet", clarnetIconReference },
+            { "bassoon", bassoonIconReference },
+            { "horn", hornIconReference },
+            { "trumpet", trumpetIconReference },
+            { "trombone", tromboneIconReference },
+            { "tuba", tubaIconReference },
             { "cello", celloIconReference }
         };
 

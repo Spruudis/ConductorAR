@@ -27,6 +27,86 @@ public class Preloader : MonoBehaviour
         int songLengthSec;
         List<string> songDataFilenameList = new List<string>();
 
+        //------ Song: Wagner’s Der Ring des Nibelung ------
+        //Enter song ID here
+        songID = "temp2";
+
+        //if (!System.IO.File.Exists(Application.persistentDataPath + "/" + songID + ".data"))
+        {
+            Debug.Log("Preloader: Start --- Saving " + songID + " to persistent memory");
+
+            //------- Enter song data here ---------
+            songName = "Piano Concerto in A minor, Op. 16";
+            songAuthor = "Edvard Grieg";
+            songBPM = 50;
+            songLengthMin = 13;
+            songLengthSec = 41;
+
+            //List of instrument IDs that are present in the song
+            List<string> instruments = new List<string>()
+            {
+                "piano",
+                "flute",
+                "oboe",
+                "clarnet",
+                "bassoon",
+                "horn",
+                "trumpet",
+                "trombone",
+                "tuba",
+                "strings"
+            };
+
+
+            //List of emotions and tones associated with the song
+            //Range for each emotion should be 0 (not sad at all) to 1(definitely sad)
+            List<double> emotions = new List<double>()
+            {
+                //anger
+                0.05,
+                //fear
+                0.05,
+                //joy
+                0.05,
+                //sadness
+                0.862,
+                //analytical
+                0.05,
+                //confident
+                0.05,
+                //tentative
+                0.8
+            };
+
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            string path = Application.persistentDataPath + "/" + songID + ".data";
+            FileStream stream = new FileStream(path, FileMode.Create);
+
+            //List of the mp3 file names for each instrument
+            List<string> clipNames = new List<string>()
+            {
+                "Cello_AJourneyToHeaven"
+            };
+
+            //List of the the cues for each instrument
+            List<float> allCues = aJourneyToHeavenCues();
+
+            //Creating binary file
+            SongData aJourneyToHeaven = new SongData(songName, songAuthor, instruments, allCues, clipNames, songBPM, songLengthMin, songLengthSec);
+            formatter.Serialize(stream, aJourneyToHeaven);
+            stream.Close();
+
+            songDataFilenameList.Add(songID + ".data");
+
+
+            //save the emotions to a seperate file
+            BinaryFormatter formatter2 = new BinaryFormatter();
+            path = Application.persistentDataPath + "/" + songID + ".emo";
+            FileStream stream2 = new FileStream(path, FileMode.Create);
+            formatter2.Serialize(stream2, emotions);
+            stream.Close();
+        }
 
         //------ Song: Journey to Heaven by Damien Deshayes ------
         //Enter song ID here
@@ -48,7 +128,7 @@ public class Preloader : MonoBehaviour
             {
                 "cello",
                 "piano",
-                "synth",
+                /*"synth",*/
                 "strings"
             };
 
@@ -83,7 +163,7 @@ public class Preloader : MonoBehaviour
             {
                 "Cello_AJourneyToHeaven",
                 "Piano_AJourneyToHeaven",
-                "Synth_AJourneyToHeaven",
+                /*"Synth_AJourneyToHeaven",*/
                 "Strings_AJourneyToHeaven"
             };
 
@@ -185,6 +265,84 @@ public class Preloader : MonoBehaviour
         }
 
 
+
+
+        //------ Song: Wagner’s Der Ring des Nibelung ------
+        //Enter song ID here
+        songID = "temp1";
+
+        //if (!System.IO.File.Exists(Application.persistentDataPath + "/" + songID + ".data"))
+        {
+            Debug.Log("Preloader: Start --- Saving " + songID + " to persistent memory");
+
+            //------- Enter song data here ---------
+            songName = "Cello Suite No. 1 in G major";
+            songAuthor = "Johann Sebastian Bach";
+            songBPM = 50;
+            songLengthMin = 2;
+            songLengthSec = 32;
+
+            //List of instrument IDs that are present in the song
+            List<string> instruments = new List<string>()
+            {
+                "cello"
+            };
+
+
+            //List of emotions and tones associated with the song
+            //Range for each emotion should be 0 (not sad at all) to 1(definitely sad)
+            List<double> emotions = new List<double>()
+            {
+                //anger
+                0.05,
+                //fear
+                0.3,
+                //joy
+                0.5,
+                //sadness
+                0.6,
+                //analytical
+                0.1,
+                //confident
+                0.3,
+                //tentative
+                0.8
+            };
+
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            string path = Application.persistentDataPath + "/" + songID + ".data";
+            FileStream stream = new FileStream(path, FileMode.Create);
+
+            //List of the mp3 file names for each instrument
+            List<string> clipNames = new List<string>()
+            {
+                "Cello_AJourneyToHeaven"
+            };
+
+            //List of the the cues for each instrument
+            List<float> allCues = aJourneyToHeavenCues();
+
+            //Creating binary file
+            SongData aJourneyToHeaven = new SongData(songName, songAuthor, instruments, allCues, clipNames, songBPM, songLengthMin, songLengthSec);
+            formatter.Serialize(stream, aJourneyToHeaven);
+            stream.Close();
+
+            songDataFilenameList.Add(songID + ".data");
+
+
+            //save the emotions to a seperate file
+            BinaryFormatter formatter2 = new BinaryFormatter();
+            path = Application.persistentDataPath + "/" + songID + ".emo";
+            FileStream stream2 = new FileStream(path, FileMode.Create);
+            formatter2.Serialize(stream2, emotions);
+            stream.Close();
+        }
+
+
+        
+
+
         //Save reference txt
         //if (!System.IO.File.Exists(Application.persistentDataPath + "/saveFiles.txt"))
         {
@@ -207,6 +365,7 @@ public class Preloader : MonoBehaviour
         }
 
     }
+
 
     // Update is called once per frame
     void Update()
@@ -258,16 +417,16 @@ public class Preloader : MonoBehaviour
             250,
             303
         };
-        List<float> synthCues = new List<float>(){
-            8,
-            129,
-            149,
-            177,
-            182,
-            221,
-            247,
-            270
-        };
+        //List<float> synthCues = new List<float>(){
+        //    8,
+        //    129,
+        //    149,
+        //    177,
+        //    182,
+        //    221,
+        //    247,
+        //    270
+        //};
         List<float> stringsCues = new List<float>(){
             27,
             72,
@@ -280,8 +439,8 @@ public class Preloader : MonoBehaviour
         allCues.Add(-1);
         allCues.AddRange(pianoCues);
         allCues.Add(-1);
-        allCues.AddRange(synthCues);
-        allCues.Add(-1);
+        //allCues.AddRange(synthCues);
+        //allCues.Add(-1);
         allCues.AddRange(stringsCues);
         return allCues;
     }
