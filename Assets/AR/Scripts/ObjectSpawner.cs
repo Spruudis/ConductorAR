@@ -206,8 +206,8 @@ public class ObjectSpawner : MonoBehaviour
             Dictionary<string, GameObject> allObjects = objectManager.allObjectsSpawned();
             foreach(KeyValuePair<string, GameObject> entry in allObjects)
             {
-                startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControl>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key], SongLoader.BPM); });
-                restartEndButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControl>().RestartMusic(); });
+                startButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControlAlt>().Initialise(SongLoader.instrumentCues[entry.Key], SongLoader.clipNames[entry.Key], SongLoader.BPM); });
+                restartEndButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControlAlt>().RestartMusic(); });
             }
             
                
@@ -220,7 +220,7 @@ public class ObjectSpawner : MonoBehaviour
         Dictionary<string, GameObject> allObjects = objectManager.allObjectsSpawned();
         foreach(KeyValuePair<string, GameObject> entry in allObjects)
         {
-            pauseButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControl>().PauseMusic(); });
+            pauseButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControlAlt>().PauseMusic(); });
         }
     }
 

@@ -12,7 +12,9 @@ public class SongData
     public List<float> cues;
     public List<string> clipNames;
     public int BPM;
-    public SongData(string Name, string inputAuthor, List<string> instrumentsvar, List<float> inputCues, List<string> inputClipNames, int inputBPM)
+    public int songLengthMin;
+    public int songLengthSec;
+    public SongData(string Name, string inputAuthor, List<string> instrumentsvar, List<float> inputCues, List<string> inputClipNames, int inputBPM, int inputsongLengthMin, int inputsongLengthSec)
     {
         author = inputAuthor;
         songName = Name;
@@ -20,5 +22,7 @@ public class SongData
         cues = inputCues;
         clipNames = inputClipNames;
         BPM = inputBPM;
+        songLengthMin = inputsongLengthMin;
+        songLengthSec = inputsongLengthSec;
     }
 }

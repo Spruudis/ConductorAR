@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/AR/Models/EffectTexturesAndPrefabs.meta
+guid: 0a7713757e61a58498cdc745c62f420e
+=======
+guid: 2a63df778264cb046a887a367753df68
+>>>>>>> parent of a146ad7... Revert "Merge branch 'implementing-ar-audio-game' of https://github.com/Spruudis/ConductorAR into implementing-ar-audio-game":Assets/AR/Instrument Prefabs/Instrument Placers.meta
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

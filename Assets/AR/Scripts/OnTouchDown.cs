@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 
 public class OnTouchDown : MonoBehaviour
 {
@@ -40,7 +39,7 @@ public class OnTouchDown : MonoBehaviour
 
             if (touch.phase.Equals(TouchPhase.Began)) //check for the first touch
             {
-                
+
                 // Construct a ray from the current touch coordinates
                 RaycastHit hit = new RaycastHit();
                 Ray ray = Camera.main.ScreenPointToRay(touchPosition);

@@ -101,7 +101,7 @@ public class PlacementIndicator : MonoBehaviour
         if(hits.Count > 0)
         {
             transform.position = hits[0].pose.position;
-            transform.rotation = hits[0].pose.rotation;
+            transform.rotation = hits[0].pose.rotation * Quaternion.Euler(0, 180f, 0);
 
             if (!visual.activeInHierarchy && showIndicator)
             {

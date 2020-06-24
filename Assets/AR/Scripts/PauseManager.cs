@@ -24,7 +24,7 @@ public class PauseManager : MonoBehaviour
         Dictionary<string, GameObject> allObjects = objectManager.allObjectsSpawned();
         foreach(KeyValuePair<string, GameObject> entry in allObjects)
         {
-            resumeButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControl>().UnpauseMusic(); });
+            resumeButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControlAlt>().UnpauseMusic(); });
         }
     }
 
@@ -34,7 +34,7 @@ public class PauseManager : MonoBehaviour
         Dictionary<string, GameObject> allObjects = objectManager.allObjectsSpawned();
         foreach(KeyValuePair<string, GameObject> entry in allObjects)
         {
-            restartButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControl>().RestartMusic(); });
+            restartButton.onClick.AddListener(delegate{ entry.Value.GetComponent<InstrumentControlAlt>().RestartMusic(); });
         }
     }
 
