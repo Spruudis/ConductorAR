@@ -27,7 +27,7 @@ public class Preloader : MonoBehaviour
         int songLengthSec;
         List<string> songDataFilenameList = new List<string>();
 
-        //------ Song: Wagner’s Der Ring des Nibelung ------
+        /*//------ Song: Wagner’s Der Ring des Nibelung ------
         //Enter song ID here
         songID = "temp2";
 
@@ -106,7 +106,7 @@ public class Preloader : MonoBehaviour
             FileStream stream2 = new FileStream(path, FileMode.Create);
             formatter2.Serialize(stream2, emotions);
             stream.Close();
-        }
+        }*/
 
         //------ Song: Journey to Heaven by Damien Deshayes ------
         //Enter song ID here
@@ -188,7 +188,7 @@ public class Preloader : MonoBehaviour
 
 
 
-        //------ Song: Journey to Hell by Lucifer Morningstar ------
+        /*//------ Song: Journey to Hell by Lucifer Morningstar ------
         //Enter song ID here
         songID = "AJourneyToHell";
         {
@@ -337,7 +337,7 @@ public class Preloader : MonoBehaviour
             FileStream stream2 = new FileStream(path, FileMode.Create);
             formatter2.Serialize(stream2, emotions);
             stream.Close();
-        }
+        }*/
 
 
         
